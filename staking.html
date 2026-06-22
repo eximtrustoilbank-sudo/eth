@@ -14,7 +14,7 @@
             line-height: 1.6;
         }
         a { color: #4a90e2; text-decoration: none; }
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
         header {
             padding: 20px 0;
@@ -77,6 +77,16 @@
         .page-header h1 span { color: #4a90e2; }
         .page-header p { color: #4a5568; }
 
+        .page-banner {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 24px;
+            margin: 0 auto 30px;
+            display: block;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+        }
+
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -116,30 +126,6 @@
         .pool-card .status { font-size: 0.7rem; display: inline-block; margin-top: 6px; padding: 3px 14px; border-radius: 40px; background: #e8f5e9; color: #2e7d32; }
         .pool-card .status.soon { background: #fff3e0; color: #e65100; }
 
-        .section-title { font-size: 1.2rem; font-weight: 700; margin: 30px 0 12px; color: #1a1a1a; }
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 8px;
-            padding-bottom: 20px;
-        }
-        .tool-card {
-            background: #fafbfc;
-            border: 1px solid #e8ecf0;
-            border-radius: 12px;
-            padding: 10px 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            font-weight: 500;
-            color: #1a1a1a;
-            transition: 0.2s;
-            cursor: pointer;
-        }
-        .tool-card:hover { border-color: #4a90e2; background: #f0f4ff; }
-        .tool-card .icon { font-size: 16px; }
-
         footer {
             padding: 30px 0;
             border-top: 1px solid #e8ecf0;
@@ -155,7 +141,7 @@
             .nav-links { justify-content: center; }
             .page-header h1 { font-size: 1.8rem; }
             .pools-grid { grid-template-columns: 1fr 1fr; }
-            .tools-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+            .page-banner { max-height: 200px; }
         }
         @media (max-width: 480px) { .pools-grid { grid-template-columns: 1fr; } }
     </style>
@@ -165,7 +151,7 @@
 <header>
     <div class="container header-inner">
         <a href="index.html" class="logo">
-            <img src="https://raw.githubusercontent.com/eximtrustoilbank-sudo/eth/refs/heads/main/eth_logo.png" alt="Ether">
+            <img src="https://raw.githubusercontent.com/eximtrustoilbank-sudo/eth/main/eth_logo.png" alt="Ether">
             <span>Ether</span>
         </a>
         <div class="nav-links">
@@ -197,6 +183,8 @@
         <h1>🪙 <span data-i18n="page-title">ETH Staking</span></h1>
         <p data-i18n="page-desc">Lock your tokens and earn passive income</p>
     </div>
+
+    <img src="https://raw.githubusercontent.com/eximtrustoilbank-sudo/eth/main/staking_eth.png" alt="Ether Staking" class="page-banner">
 
     <div class="stats-grid">
         <div class="stat-card"><div class="num" data-i18n="stat1">18.3%</div><div class="lbl" data-i18n="stat1-lbl">Avg. APR</div></div>
@@ -235,9 +223,6 @@
             <div class="status soon" data-i18n="pool4-status">⏳ Soon</div>
         </a>
     </div>
-
-    <div class="section-title" data-i18n="section1">💎 Staking Tools</div>
-    <div class="tools-grid" id="stakingToolsGrid"></div>
 </div>
 
 <footer>
@@ -256,76 +241,9 @@
 
 <script>
     // ============================================================
-    // 10,000+ СТЕЙКИНГ-ФУНКЦИЙ
+    // 8 ЯЗЫКОВ — ПЕРЕВОДЧИК
     // ============================================================
 
-    const stakingTools = [
-        ['Compound', 'https://compound.finance/', '🔄'],
-        ['Aave', 'https://aave.com/', '🏦'],
-        ['Lido', 'https://lido.fi/', '💧'],
-        ['Rocket Pool', 'https://rocketpool.net/', '🚀'],
-        ['Stader', 'https://staderlabs.com/', '🌟'],
-        ['Marinade', 'https://marinade.finance/', '🧊'],
-        ['Jito', 'https://jito.network/', '⚡'],
-        ['Sanctum', 'https://sanctum.so/', '💎'],
-        ['Solana Staking', 'https://solana.com/staking', '🪙'],
-        ['Everstake', 'https://everstake.one/', '🏛️']
-    ];
-
-    function generateStakingLinks(count) {
-        const links = [];
-        const companies = ['Compound', 'Aave', 'Lido', 'Rocket Pool', 'Stader', 'Marinade', 'Jito', 'Sanctum', 'Everstake', 'Figment', 'Chorus One', 'P2P', 'Kraken', 'Binance', 'Coinbase'];
-        const types = ['Liquid Staking', 'Native Staking', 'DeFi Staking', 'ETH Staking', 'SOL Staking', 'BTC Staking'];
-        for (let i = 0; i < count; i++) {
-            const company = companies[i % companies.length];
-            const type = types[i % types.length];
-            const num = i + 1;
-            links.push({
-                name: `${company} ${type} Pool #${num}`,
-                url: `https://${company.toLowerCase().replace(/\s/g, '')}.com/`,
-                icon: '💎'
-            });
-        }
-        return links;
-    }
-
-    const stakingLinks = generateStakingLinks(10200);
-
-    function renderStakingGrid(id) {
-        const el = document.getElementById(id);
-        if (!el) return;
-        const baseTools = stakingTools.map(item => `
-            <a href="${item[1]}" target="_blank" class="tool-card">
-                <span class="icon">${item[2]}</span> ${item[0]}
-            </a>
-        `).join('');
-        el.innerHTML = baseTools;
-    }
-    renderStakingGrid('stakingToolsGrid');
-
-    // Добавляем 10,000+ ссылок внизу
-    const container = document.querySelector('.container');
-    const megaDiv = document.createElement('div');
-    megaDiv.style.cssText = 'margin-top:40px;border-top:2px solid #e8ecf0;padding-top:30px;';
-    megaDiv.innerHTML = `<h2 style="text-align:center;font-size:1.8rem;font-weight:800;">🔗 10,000+ Staking Pools</h2>
-                         <p style="text-align:center;color:#4a5568;margin-bottom:20px;">All links lead to different staking services</p>`;
-    const megaGrid = document.createElement('div');
-    megaGrid.style.cssText = 'display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:6px;padding-bottom:30px;';
-    const display = stakingLinks.slice(0, 2000);
-    display.forEach(item => {
-        const card = document.createElement('a');
-        card.href = item.url;
-        card.target = '_blank';
-        card.style.cssText = 'background:#fafbfc;border:1px solid #e8ecf0;border-radius:8px;padding:6px 10px;font-size:11px;color:#4a5568;display:flex;align-items:center;gap:6px;transition:0.15s;text-decoration:none;';
-        card.onmouseover = function() { this.style.borderColor = '#4a90e2'; this.style.background = '#f0f4ff'; };
-        card.onmouseout = function() { this.style.borderColor = '#e8ecf0'; this.style.background = '#fafbfc'; };
-        card.innerHTML = `<span style="font-size:14px;">${item.icon}</span> ${item.name}`;
-        megaGrid.appendChild(card);
-    });
-    megaDiv.appendChild(megaGrid);
-    container.appendChild(megaDiv);
-
-    // ——— ПЕРЕВОДЧИК (8 ЯЗЫКОВ) ———
     const translations = {
         en: {
             'nav-home': 'Home', 'nav-trade': 'Trade', 'nav-staking': 'Staking',
@@ -339,7 +257,6 @@
             'pool2-name': 'ETH 30 days', 'pool2-apy': '18.3% APR', 'pool2-duration': '⏱ 30 days', 'pool2-status': '✅ Active',
             'pool3-name': 'ETH 90 days', 'pool3-apy': '25.4% APR', 'pool3-duration': '⏱ 90 days', 'pool3-status': '✅ Active',
             'pool4-name': 'ETH VIP', 'pool4-apy': '32.1% APR', 'pool4-duration': '⏱ 1 year', 'pool4-status': '⏳ Soon',
-            'section1': '💎 Staking Tools',
             'footer-copy': '© 2026 Ether Protocol — Earn with us'
         },
         ru: {
@@ -354,7 +271,6 @@
             'pool2-name': 'ETH 30 дней', 'pool2-apy': '18.3% APR', 'pool2-duration': '⏱ 30 дней', 'pool2-status': '✅ Активен',
             'pool3-name': 'ETH 90 дней', 'pool3-apy': '25.4% APR', 'pool3-duration': '⏱ 90 дней', 'pool3-status': '✅ Активен',
             'pool4-name': 'ETH VIP', 'pool4-apy': '32.1% APR', 'pool4-duration': '⏱ 1 год', 'pool4-status': '⏳ Скоро',
-            'section1': '💎 Инструменты стейкинга',
             'footer-copy': '© 2026 Ether Protocol — Зарабатывай с нами'
         },
         es: {
@@ -369,7 +285,6 @@
             'pool2-name': 'ETH 30 días', 'pool2-apy': '18.3% APR', 'pool2-duration': '⏱ 30 días', 'pool2-status': '✅ Activo',
             'pool3-name': 'ETH 90 días', 'pool3-apy': '25.4% APR', 'pool3-duration': '⏱ 90 días', 'pool3-status': '✅ Activo',
             'pool4-name': 'ETH VIP', 'pool4-apy': '32.1% APR', 'pool4-duration': '⏱ 1 año', 'pool4-status': '⏳ Próximamente',
-            'section1': '💎 Herramientas de Staking',
             'footer-copy': '© 2026 Ether Protocol — Gana con nosotros'
         },
         fr: {
@@ -384,7 +299,6 @@
             'pool2-name': 'ETH 30 jours', 'pool2-apy': '18.3% APR', 'pool2-duration': '⏱ 30 jours', 'pool2-status': '✅ Actif',
             'pool3-name': 'ETH 90 jours', 'pool3-apy': '25.4% APR', 'pool3-duration': '⏱ 90 jours', 'pool3-status': '✅ Actif',
             'pool4-name': 'ETH VIP', 'pool4-apy': '32.1% APR', 'pool4-duration': '⏱ 1 an', 'pool4-status': '⏳ Bientôt',
-            'section1': '💎 Outils de Staking',
             'footer-copy': '© 2026 Ether Protocol — Gagnez avec nous'
         },
         de: {
@@ -399,7 +313,6 @@
             'pool2-name': 'ETH 30 Tage', 'pool2-apy': '18.3% APR', 'pool2-duration': '⏱ 30 Tage', 'pool2-status': '✅ Aktiv',
             'pool3-name': 'ETH 90 Tage', 'pool3-apy': '25.4% APR', 'pool3-duration': '⏱ 90 Tage', 'pool3-status': '✅ Aktiv',
             'pool4-name': 'ETH VIP', 'pool4-apy': '32.1% APR', 'pool4-duration': '⏱ 1 Jahr', 'pool4-status': '⏳ Bald',
-            'section1': '💎 Staking-Tools',
             'footer-copy': '© 2026 Ether Protocol — Verdiene mit uns'
         },
         zh: {
@@ -414,7 +327,6 @@
             'pool2-name': 'ETH 30天', 'pool2-apy': '18.3% APR', 'pool2-duration': '⏱ 30天', 'pool2-status': '✅ 活跃',
             'pool3-name': 'ETH 90天', 'pool3-apy': '25.4% APR', 'pool3-duration': '⏱ 90天', 'pool3-status': '✅ 活跃',
             'pool4-name': 'ETH VIP', 'pool4-apy': '32.1% APR', 'pool4-duration': '⏱ 1年', 'pool4-status': '⏳ 即将推出',
-            'section1': '💎 质押工具',
             'footer-copy': '© 2026 Ether Protocol — 与我们一同赚取'
         },
         ja: {
@@ -429,7 +341,6 @@
             'pool2-name': 'ETH 30日', 'pool2-apy': '18.3% APR', 'pool2-duration': '⏱ 30日', 'pool2-status': '✅ アクティブ',
             'pool3-name': 'ETH 90日', 'pool3-apy': '25.4% APR', 'pool3-duration': '⏱ 90日', 'pool3-status': '✅ アクティブ',
             'pool4-name': 'ETH VIP', 'pool4-apy': '32.1% APR', 'pool4-duration': '⏱ 1年', 'pool4-status': '⏳ 近日公開',
-            'section1': '💎 ステーキングツール',
             'footer-copy': '© 2026 Ether Protocol — 私たちと一緒に稼ぐ'
         },
         ko: {
@@ -444,7 +355,6 @@
             'pool2-name': 'ETH 30일', 'pool2-apy': '18.3% APR', 'pool2-duration': '⏱ 30일', 'pool2-status': '✅ 활성',
             'pool3-name': 'ETH 90일', 'pool3-apy': '25.4% APR', 'pool3-duration': '⏱ 90일', 'pool3-status': '✅ 활성',
             'pool4-name': 'ETH VIP', 'pool4-apy': '32.1% APR', 'pool4-duration': '⏱ 1년', 'pool4-status': '⏳ 곧',
-            'section1': '💎 스테이킹 도구',
             'footer-copy': '© 2026 Ether Protocol — 우리와 함께 수익을'
         }
     };
