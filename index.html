@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ether — The Premium Fuel of SAFE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+        a { color: #4a90e2; text-decoration: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* ——— HEADER ——— */
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid #e8ecf0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: 900;
+            color: #1a1a1a;
+        }
+        .logo img { height: 36px; width: auto; }
+        .logo span { color: #4a90e2; }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .nav-links a { color: #4a5568; transition: 0.2s; }
+        .nav-links a:hover { color: #2b6cb0; }
+        .nav-links .active { color: #2b6cb0; font-weight: 600; }
+        .btn-buy {
+            background: #4a90e2;
+            color: #fff !important;
+            padding: 8px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+        .btn-buy:hover { background: #2b6cb0; transform: scale(1.02); }
+
+        /* ——— HERO ——— */
+        .hero {
+            padding: 80px 0 60px;
+            text-align: center;
+            background: linear-gradient(180deg, #f7fafc 0%, #ffffff 100%);
+        }
+        .hero h1 {
+            font-size: clamp(2.8rem, 8vw, 4.8rem);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+        }
+        .hero h1 .highlight { color: #4a90e2; }
+        .hero p {
+            font-size: 1.2rem;
+            color: #4a5568;
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+        }
+        .btn-primary {
+            background: #4a90e2;
+            color: #fff !important;
+            font-weight: 700;
+            padding: 14px 44px;
+            border-radius: 60px;
+            font-size: 1.05rem;
+            display: inline-block;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover { background: #2b6cb0; transform: scale(1.02); box-shadow: 0 8px 30px rgba(74,144,226,0.3); }
+        .btn-secondary {
+            background: #e8ecf0;
+            color: #1a1a1a !important;
+            font-weight: 600;
+            padding: 14px 34px;
+            border-radius: 60px;
+            font-size: 1.05rem;
+            transition: 0.2s;
+            display: inline-block;
+        }
+        .btn-secondary:hover { background: #d2d8e0; }
+
+        /* ——— STATS ——— */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 20px;
+            padding: 40px 0 60px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #e8ecf0;
+            border-radius: 16px;
+            background: #fafbfc;
+        }
+        .stat-item .number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #4a90e2;
+        }
+        .stat-item .label {
+            font-size: 0.85rem;
+            color: #4a5568;
+            margin-top: 4px;
+        }
+
+        /* ———— ECOSYSTEM ———— */
+        .ecosystem { padding: 40px 0 60px; }
+        .ecosystem h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .ecosystem .sub {
+            text-align: center;
+            color: #4a5568;
+            max-width: 500px;
+            margin: 0 auto 40px;
+        }
+        .eco-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+        .eco-card {
+            background: #fafbfc;
+            border: 1px solid #e8ecf0;
+            padding: 28px 20px 24px;
+            border-radius: 20px;
+            text-align: center;
+            transition: 0.25s;
+        }
+        .eco-card:hover { border-color: #4a90e2; transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.04); }
+        .eco-card .icon { font-size: 2.4rem; margin-bottom: 10px; }
+        .eco-card h3 { font-size: 1.1rem; margin-bottom: 4px; }
+        .eco-card p { font-size: 0.9rem; color: #4a5568; }
+        .eco-card .link-btn {
+            display: inline-block;
+            margin-top: 12px;
+            font-weight: 600;
+            color: #4a90e2;
+            font-size: 0.9rem;
+        }
+        .eco-card .link-btn:hover { color: #2b6cb0; }
+
+        /* ——— CONTRACT ——— */
+        .contract-box {
+            text-align: center;
+            padding: 20px 0 40px;
+        }
+        .contract-box code {
+            background: #f0f2f5;
+            padding: 10px 24px;
+            border-radius: 60px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #1a1a1a;
+            border: 1px solid #e8ecf0;
+            display: inline-block;
+            word-break: break-all;
+            max-width: 100%;
+        }
+
+        /* ——— FOOTER ——— */
+        footer {
+            padding: 30px 0;
+            border-top: 1px solid #e8ecf0;
+            text-align: center;
+            color: #4a5568;
+            font-size: 0.85rem;
+        }
+        footer .socials a {
+            color: #4a5568;
+            margin: 0 14px;
+            font-size: 14px;
+        }
+        footer .socials a:hover { color: #2b6cb0; }
+
+        @media (max-width: 700px) {
+            .header-inner { flex-direction: column; align-items: stretch; text-align: center; }
+            .nav-links { justify-content: center; }
+            .hero h1 { font-size: 2.4rem; }
+            .eco-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 480px) { .eco-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-inner">
+        <a href="index.html" class="logo">
+            <img src="https://raw.githubusercontent.com/eximtrustoilbank-sudo/eth/refs/heads/main/eth_logo.png" alt="Ether">
+            <span>Ether</span>
+        </a>
+        <div class="nav-links">
+            <a href="index.html" class="active">Главная</a>
+            <a href="trade.html">Торги</a>
+            <a href="staking.html">Стейкинг</a>
+            <a href="dao.html">Управление</a>
+            <a href="bridge.html">Мост</a>
+            <a href="#" class="btn-buy">Купить ETH</a>
+        </div>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h1>Топливо для <span class="highlight">новой эры</span></h1>
+        <p>Ether — премиальный токен экосистемы SAFE. Стейкай, управляй и получай доступ к эксклюзивным запускам на Solana.</p>
+        <div class="hero-buttons">
+            <a href="#" class="btn-primary">🚀 Начать</a>
+            <a href="#ecosystem" class="btn-secondary">Исследовать</a>
+        </div>
+    </div>
+</section>
+
+<div class="container stats">
+    <div class="stat-item"><div class="number">10B</div><div class="label">Общий запас</div></div>
+    <div class="stat-item"><div class="number">0.5%</div><div class="label">Комиссия</div></div>
+    <div class="stat-item"><div class="number">Solana</div><div class="label">Сеть</div></div>
+    <div class="stat-item"><div class="number">🛡️</div><div class="label">Страховой фонд</div></div>
+</div>
+
+<section class="container ecosystem" id="ecosystem">
+    <h2>🌐 Экосистема Ether</h2>
+    <p class="sub">Четыре столпа, которые делают Ether топливом SAFE</p>
+    <div class="eco-grid">
+        <div class="eco-card">
+            <div class="icon">📊</div>
+            <h3>Торги</h3>
+            <p>Покупайте и продавайте ETH на Meteora с глубокой ликвидностью.</p>
+            <a href="trade.html" class="link-btn">Перейти →</a>
+        </div>
+        <div class="eco-card">
+            <div class="icon">🪙</div>
+            <h3>Стейкинг</h3>
+            <p>Заморозьте ETH и получайте пассивный доход с высоким APR.</p>
+            <a href="staking.html" class="link-btn">Перейти →</a>
+        </div>
+        <div class="eco-card">
+            <div class="icon">🏛️</div>
+            <h3>Управление</h3>
+            <p>Голосуйте за развитие экосистемы через DAO.</p>
+            <a href="dao.html" class="link-btn">Перейти →</a>
+        </div>
+        <div class="eco-card">
+            <div class="icon">🌉</div>
+            <h3>Мост</h3>
+            <p>Перемещайте активы между Solana и другими сетями.</p>
+            <a href="bridge.html" class="link-btn">Перейти →</a>
+        </div>
+    </div>
+</section>
+
+<div class="container contract-box">
+    <code>📜 Ether: 63GqfRg2EUox4enPniaR5oyhsKJHJGRSuys6xUPBoqGq</code>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="socials">
+            <a href="#">🐦 Twitter</a>
+            <a href="#">💬 Telegram</a>
+            <a href="#">📊 GeckoTerminal</a>
+            <a href="#">📈 CoinGecko</a>
+        </div>
+        <p>© 2026 Ether Protocol. Built on Solana.</p>
+    </div>
+</footer>
+
+</body>
+</html>
