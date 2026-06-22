@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,7 +16,6 @@
         a { color: #4a90e2; text-decoration: none; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-        /* ——— HEADER ——— */
         header {
             padding: 20px 0;
             border-bottom: 1px solid #e8ecf0;
@@ -46,7 +45,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 24px;
+            gap: 20px;
             flex-wrap: wrap;
             font-size: 14px;
             font-weight: 500;
@@ -64,7 +63,15 @@
         }
         .btn-buy:hover { background: #2b6cb0; transform: scale(1.02); }
 
-        /* ——— HERO ——— */
+        .lang-switcher { position: relative; display: inline-block; margin-left: 4px; }
+        .lang-btn { background: #f0f2f5; border: 1px solid #e8ecf0; color: #1a1a1a; padding: 4px 12px; border-radius: 40px; font-size: 12px; cursor: pointer; font-weight: 600; transition: 0.2s; display: flex; align-items: center; gap: 4px; }
+        .lang-btn:hover { background: #e8ecf0; border-color: #4a90e2; }
+        .lang-dropdown { position: absolute; top: 120%; right: 0; background: #ffffff; border: 1px solid #e8ecf0; border-radius: 16px; padding: 6px 0; min-width: 140px; display: none; z-index: 999; box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+        .lang-dropdown.show { display: block; }
+        .lang-dropdown button { background: none; border: none; color: #4a5568; padding: 6px 18px; width: 100%; text-align: left; font-size: 12px; font-weight: 500; cursor: pointer; transition: 0.1s; font-family: inherit; }
+        .lang-dropdown button:hover { background: #f0f4ff; color: #2b6cb0; }
+        .lang-dropdown button.active { color: #4a90e2; font-weight: 700; }
+
         .hero {
             padding: 80px 0 60px;
             text-align: center;
@@ -85,135 +92,34 @@
             max-width: 600px;
             margin: 0 auto 32px;
         }
-        .hero-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 16px;
-        }
-        .btn-primary {
-            background: #4a90e2;
-            color: #fff !important;
-            font-weight: 700;
-            padding: 14px 44px;
-            border-radius: 60px;
-            font-size: 1.05rem;
-            display: inline-block;
-            transition: 0.2s;
-            border: none;
-            cursor: pointer;
-        }
+        .hero-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+        .btn-primary { background: #4a90e2; color: #fff !important; font-weight: 700; padding: 14px 44px; border-radius: 60px; font-size: 1.05rem; display: inline-block; transition: 0.2s; border: none; cursor: pointer; }
         .btn-primary:hover { background: #2b6cb0; transform: scale(1.02); box-shadow: 0 8px 30px rgba(74,144,226,0.3); }
-        .btn-secondary {
-            background: #e8ecf0;
-            color: #1a1a1a !important;
-            font-weight: 600;
-            padding: 14px 34px;
-            border-radius: 60px;
-            font-size: 1.05rem;
-            transition: 0.2s;
-            display: inline-block;
-        }
+        .btn-secondary { background: #e8ecf0; color: #1a1a1a !important; font-weight: 600; padding: 14px 34px; border-radius: 60px; font-size: 1.05rem; transition: 0.2s; display: inline-block; }
         .btn-secondary:hover { background: #d2d8e0; }
 
-        /* ——— STATS ——— */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 20px;
-            padding: 40px 0 60px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .stat-item {
-            text-align: center;
-            padding: 20px;
-            border: 1px solid #e8ecf0;
-            border-radius: 16px;
-            background: #fafbfc;
-        }
-        .stat-item .number {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: #4a90e2;
-        }
-        .stat-item .label {
-            font-size: 0.85rem;
-            color: #4a5568;
-            margin-top: 4px;
-        }
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px; padding: 40px 0 60px; max-width: 900px; margin: 0 auto; }
+        .stat-item { text-align: center; padding: 20px; border: 1px solid #e8ecf0; border-radius: 16px; background: #fafbfc; }
+        .stat-item .number { font-size: 1.8rem; font-weight: 800; color: #4a90e2; }
+        .stat-item .label { font-size: 0.85rem; color: #4a5568; margin-top: 4px; }
 
-        /* ———— ECOSYSTEM ———— */
         .ecosystem { padding: 40px 0 60px; }
-        .ecosystem h2 {
-            text-align: center;
-            font-size: 2.2rem;
-            font-weight: 800;
-            margin-bottom: 8px;
-        }
-        .ecosystem .sub {
-            text-align: center;
-            color: #4a5568;
-            max-width: 500px;
-            margin: 0 auto 40px;
-        }
-        .eco-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 24px;
-        }
-        .eco-card {
-            background: #fafbfc;
-            border: 1px solid #e8ecf0;
-            padding: 28px 20px 24px;
-            border-radius: 20px;
-            text-align: center;
-            transition: 0.25s;
-        }
+        .ecosystem h2 { text-align: center; font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; }
+        .ecosystem .sub { text-align: center; color: #4a5568; max-width: 500px; margin: 0 auto 40px; }
+        .eco-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+        .eco-card { background: #fafbfc; border: 1px solid #e8ecf0; padding: 28px 20px 24px; border-radius: 20px; text-align: center; transition: 0.25s; }
         .eco-card:hover { border-color: #4a90e2; transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.04); }
         .eco-card .icon { font-size: 2.4rem; margin-bottom: 10px; }
         .eco-card h3 { font-size: 1.1rem; margin-bottom: 4px; }
         .eco-card p { font-size: 0.9rem; color: #4a5568; }
-        .eco-card .link-btn {
-            display: inline-block;
-            margin-top: 12px;
-            font-weight: 600;
-            color: #4a90e2;
-            font-size: 0.9rem;
-        }
+        .eco-card .link-btn { display: inline-block; margin-top: 12px; font-weight: 600; color: #4a90e2; font-size: 0.9rem; }
         .eco-card .link-btn:hover { color: #2b6cb0; }
 
-        /* ——— CONTRACT ——— */
-        .contract-box {
-            text-align: center;
-            padding: 20px 0 40px;
-        }
-        .contract-box code {
-            background: #f0f2f5;
-            padding: 10px 24px;
-            border-radius: 60px;
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: #1a1a1a;
-            border: 1px solid #e8ecf0;
-            display: inline-block;
-            word-break: break-all;
-            max-width: 100%;
-        }
+        .contract-box { text-align: center; padding: 20px 0 40px; }
+        .contract-box code { background: #f0f2f5; padding: 10px 24px; border-radius: 60px; font-family: monospace; font-size: 0.85rem; color: #1a1a1a; border: 1px solid #e8ecf0; display: inline-block; word-break: break-all; max-width: 100%; }
 
-        /* ——— FOOTER ——— */
-        footer {
-            padding: 30px 0;
-            border-top: 1px solid #e8ecf0;
-            text-align: center;
-            color: #4a5568;
-            font-size: 0.85rem;
-        }
-        footer .socials a {
-            color: #4a5568;
-            margin: 0 14px;
-            font-size: 14px;
-        }
+        footer { padding: 30px 0; border-top: 1px solid #e8ecf0; text-align: center; color: #4a5568; font-size: 0.85rem; }
+        footer .socials a { color: #4a5568; margin: 0 14px; font-size: 14px; }
         footer .socials a:hover { color: #2b6cb0; }
 
         @media (max-width: 700px) {
@@ -234,61 +140,74 @@
             <span>Ether</span>
         </a>
         <div class="nav-links">
-            <a href="index.html" class="active">Главная</a>
-            <a href="trade.html">Торги</a>
-            <a href="staking.html">Стейкинг</a>
-            <a href="dao.html">Управление</a>
-            <a href="bridge.html">Мост</a>
-            <a href="#" class="btn-buy">Купить ETH</a>
+            <a href="index.html" class="active" data-i18n="nav-home">Home</a>
+            <a href="trade.html" data-i18n="nav-trade">Trade</a>
+            <a href="staking.html" data-i18n="nav-staking">Staking</a>
+            <a href="dao.html" data-i18n="nav-dao">DAO</a>
+            <a href="bridge.html" data-i18n="nav-bridge">Bridge</a>
+            <a href="#" class="btn-buy" data-i18n="nav-buy">Buy ETH</a>
+            <div class="lang-switcher">
+                <button class="lang-btn" id="langToggle">🌐 <span id="currentLangLabel">EN</span></button>
+                <div class="lang-dropdown" id="langDropdown">
+                    <button data-lang="en" class="active">🇬🇧 English</button>
+                    <button data-lang="ru">🇷🇺 Русский</button>
+                    <button data-lang="es">🇪🇸 Español</button>
+                    <button data-lang="fr">🇫🇷 Français</button>
+                    <button data-lang="de">🇩🇪 Deutsch</button>
+                    <button data-lang="zh">🇨🇳 中文</button>
+                    <button data-lang="ja">🇯🇵 日本語</button>
+                    <button data-lang="ko">🇰🇷 한국어</button>
+                </div>
+            </div>
         </div>
     </div>
 </header>
 
 <section class="hero">
     <div class="container">
-        <h1>Топливо для <span class="highlight">новой эры</span></h1>
-        <p>Ether — премиальный токен экосистемы SAFE. Стейкай, управляй и получай доступ к эксклюзивным запускам на Solana.</p>
+        <h1 data-i18n="hero-title">Fuel for the <span class="highlight">new era</span></h1>
+        <p data-i18n="hero-desc">Ether — the premium fuel token of the SAFE ecosystem. Stake, govern, and access exclusive launches on Solana.</p>
         <div class="hero-buttons">
-            <a href="#" class="btn-primary">🚀 Начать</a>
-            <a href="#ecosystem" class="btn-secondary">Исследовать</a>
+            <a href="#" class="btn-primary" data-i18n="hero-btn">🚀 Get Started</a>
+            <a href="#ecosystem" class="btn-secondary" data-i18n="hero-btn2">Explore</a>
         </div>
     </div>
 </section>
 
 <div class="container stats">
-    <div class="stat-item"><div class="number">10B</div><div class="label">Общий запас</div></div>
-    <div class="stat-item"><div class="number">0.5%</div><div class="label">Комиссия</div></div>
-    <div class="stat-item"><div class="number">Solana</div><div class="label">Сеть</div></div>
-    <div class="stat-item"><div class="number">🛡️</div><div class="label">Страховой фонд</div></div>
+    <div class="stat-item"><div class="number">10B</div><div class="label" data-i18n="stat-supply">Total Supply</div></div>
+    <div class="stat-item"><div class="number">0.5%</div><div class="label" data-i18n="stat-fee">Transfer Fee</div></div>
+    <div class="stat-item"><div class="number">Solana</div><div class="label" data-i18n="stat-network">Network</div></div>
+    <div class="stat-item"><div class="number">🛡️</div><div class="label" data-i18n="stat-insurance">Insurance Fund</div></div>
 </div>
 
 <section class="container ecosystem" id="ecosystem">
-    <h2>🌐 Экосистема Ether</h2>
-    <p class="sub">Четыре столпа, которые делают Ether топливом SAFE</p>
+    <h2 data-i18n="eco-title">🌐 Ether Ecosystem</h2>
+    <p class="sub" data-i18n="eco-sub">Four pillars that make Ether the fuel of SAFE</p>
     <div class="eco-grid">
         <div class="eco-card">
             <div class="icon">📊</div>
-            <h3>Торги</h3>
-            <p>Покупайте и продавайте ETH на Meteora с глубокой ликвидностью.</p>
-            <a href="trade.html" class="link-btn">Перейти →</a>
+            <h3 data-i18n="eco-trade-title">Trade</h3>
+            <p data-i18n="eco-trade-desc">Buy and sell ETH on Meteora with deep liquidity.</p>
+            <a href="trade.html" class="link-btn" data-i18n="eco-trade-btn">Go →</a>
         </div>
         <div class="eco-card">
             <div class="icon">🪙</div>
-            <h3>Стейкинг</h3>
-            <p>Заморозьте ETH и получайте пассивный доход с высоким APR.</p>
-            <a href="staking.html" class="link-btn">Перейти →</a>
+            <h3 data-i18n="eco-staking-title">Staking</h3>
+            <p data-i18n="eco-staking-desc">Lock your ETH and earn passive income with high APR.</p>
+            <a href="staking.html" class="link-btn" data-i18n="eco-staking-btn">Go →</a>
         </div>
         <div class="eco-card">
             <div class="icon">🏛️</div>
-            <h3>Управление</h3>
-            <p>Голосуйте за развитие экосистемы через DAO.</p>
-            <a href="dao.html" class="link-btn">Перейти →</a>
+            <h3 data-i18n="eco-dao-title">DAO</h3>
+            <p data-i18n="eco-dao-desc">Vote on proposals and shape the future of the ecosystem.</p>
+            <a href="dao.html" class="link-btn" data-i18n="eco-dao-btn">Go →</a>
         </div>
         <div class="eco-card">
             <div class="icon">🌉</div>
-            <h3>Мост</h3>
-            <p>Перемещайте активы между Solana и другими сетями.</p>
-            <a href="bridge.html" class="link-btn">Перейти →</a>
+            <h3 data-i18n="eco-bridge-title">Bridge</h3>
+            <p data-i18n="eco-bridge-desc">Move assets between Solana and other networks.</p>
+            <a href="bridge.html" class="link-btn" data-i18n="eco-bridge-btn">Go →</a>
         </div>
     </div>
 </section>
@@ -300,14 +219,238 @@
 <footer>
     <div class="container">
         <div class="socials">
-            <a href="#">🐦 Twitter</a>
-            <a href="#">💬 Telegram</a>
-            <a href="#">📊 GeckoTerminal</a>
-            <a href="#">📈 CoinGecko</a>
+            <a href="#" data-i18n="footer-twitter">🐦 Twitter</a>
+            <a href="#" data-i18n="footer-telegram">💬 Telegram</a>
+            <a href="#" data-i18n="footer-gecko">📊 GeckoTerminal</a>
+            <a href="#" data-i18n="footer-coingecko">📈 CoinGecko</a>
         </div>
-        <p>© 2026 Ether Protocol. Built on Solana.</p>
+        <p data-i18n="footer-copy">© 2026 Ether Protocol. Built on Solana.</p>
     </div>
 </footer>
 
+<script>
+    // ============================================================
+    // 8 ЯЗЫКОВ — ПЕРЕВОДЧИК
+    // ============================================================
+
+    const translations = {
+        en: {
+            'nav-home': 'Home', 'nav-trade': 'Trade', 'nav-staking': 'Staking',
+            'nav-dao': 'DAO', 'nav-bridge': 'Bridge', 'nav-buy': 'Buy ETH',
+            'hero-title': 'Fuel for the new era',
+            'hero-desc': 'Ether — the premium fuel token of the SAFE ecosystem. Stake, govern, and access exclusive launches on Solana.',
+            'hero-btn': '🚀 Get Started', 'hero-btn2': 'Explore',
+            'stat-supply': 'Total Supply', 'stat-fee': 'Transfer Fee',
+            'stat-network': 'Network', 'stat-insurance': 'Insurance Fund',
+            'eco-title': '🌐 Ether Ecosystem',
+            'eco-sub': 'Four pillars that make Ether the fuel of SAFE',
+            'eco-trade-title': 'Trade', 'eco-trade-desc': 'Buy and sell ETH on Meteora with deep liquidity.',
+            'eco-trade-btn': 'Go →',
+            'eco-staking-title': 'Staking', 'eco-staking-desc': 'Lock your ETH and earn passive income with high APR.',
+            'eco-staking-btn': 'Go →',
+            'eco-dao-title': 'DAO', 'eco-dao-desc': 'Vote on proposals and shape the future of the ecosystem.',
+            'eco-dao-btn': 'Go →',
+            'eco-bridge-title': 'Bridge', 'eco-bridge-desc': 'Move assets between Solana and other networks.',
+            'eco-bridge-btn': 'Go →',
+            'footer-twitter': '🐦 Twitter', 'footer-telegram': '💬 Telegram',
+            'footer-gecko': '📊 GeckoTerminal', 'footer-coingecko': '📈 CoinGecko',
+            'footer-copy': '© 2026 Ether Protocol. Built on Solana.'
+        },
+        ru: {
+            'nav-home': 'Главная', 'nav-trade': 'Торги', 'nav-staking': 'Стейкинг',
+            'nav-dao': 'Управление', 'nav-bridge': 'Мост', 'nav-buy': 'Купить ETH',
+            'hero-title': 'Топливо для новой эры',
+            'hero-desc': 'Ether — премиальный токен экосистемы SAFE. Стейкай, управляй и получай доступ к эксклюзивным запускам на Solana.',
+            'hero-btn': '🚀 Начать', 'hero-btn2': 'Исследовать',
+            'stat-supply': 'Общий запас', 'stat-fee': 'Комиссия',
+            'stat-network': 'Сеть', 'stat-insurance': 'Страховой фонд',
+            'eco-title': '🌐 Экосистема Ether',
+            'eco-sub': 'Четыре столпа, которые делают Ether топливом SAFE',
+            'eco-trade-title': 'Торги', 'eco-trade-desc': 'Покупайте и продавайте ETH на Meteora с глубокой ликвидностью.',
+            'eco-trade-btn': 'Перейти →',
+            'eco-staking-title': 'Стейкинг', 'eco-staking-desc': 'Заморозьте ETH и получайте пассивный доход с высоким APR.',
+            'eco-staking-btn': 'Перейти →',
+            'eco-dao-title': 'Управление', 'eco-dao-desc': 'Голосуйте за предложения и формируйте будущее экосистемы.',
+            'eco-dao-btn': 'Перейти →',
+            'eco-bridge-title': 'Мост', 'eco-bridge-desc': 'Перемещайте активы между Solana и другими сетями.',
+            'eco-bridge-btn': 'Перейти →',
+            'footer-twitter': '🐦 Twitter', 'footer-telegram': '💬 Telegram',
+            'footer-gecko': '📊 GeckoTerminal', 'footer-coingecko': '📈 CoinGecko',
+            'footer-copy': '© 2026 Ether Protocol. Создано на Solana.'
+        },
+        es: {
+            'nav-home': 'Inicio', 'nav-trade': 'Comerciar', 'nav-staking': 'Staking',
+            'nav-dao': 'DAO', 'nav-bridge': 'Puente', 'nav-buy': 'Comprar ETH',
+            'hero-title': 'Combustible para la nueva era',
+            'hero-desc': 'Ether — el token de combustible premium del ecosistema SAFE. Stakea, gobierna y accede a lanzamientos exclusivos en Solana.',
+            'hero-btn': '🚀 Comenzar', 'hero-btn2': 'Explorar',
+            'stat-supply': 'Suministro total', 'stat-fee': 'Comisión',
+            'stat-network': 'Red', 'stat-insurance': 'Fondo de seguro',
+            'eco-title': '🌐 Ecosistema Ether',
+            'eco-sub': 'Cuatro pilares que hacen de Ether el combustible de SAFE',
+            'eco-trade-title': 'Comercio', 'eco-trade-desc': 'Compra y vende ETH en Meteora con alta liquidez.',
+            'eco-trade-btn': 'Ir →',
+            'eco-staking-title': 'Staking', 'eco-staking-desc': 'Bloquea tus ETH y obtén ingresos pasivos con alto APR.',
+            'eco-staking-btn': 'Ir →',
+            'eco-dao-title': 'DAO', 'eco-dao-desc': 'Vota propuestas y da forma al futuro del ecosistema.',
+            'eco-dao-btn': 'Ir →',
+            'eco-bridge-title': 'Puente', 'eco-bridge-desc': 'Mueve activos entre Solana y otras redes.',
+            'eco-bridge-btn': 'Ir →',
+            'footer-twitter': '🐦 Twitter', 'footer-telegram': '💬 Telegram',
+            'footer-gecko': '📊 GeckoTerminal', 'footer-coingecko': '📈 CoinGecko',
+            'footer-copy': '© 2026 Ether Protocol. Construido en Solana.'
+        },
+        fr: {
+            'nav-home': 'Accueil', 'nav-trade': 'Échanger', 'nav-staking': 'Staking',
+            'nav-dao': 'DAO', 'nav-bridge': 'Pont', 'nav-buy': 'Acheter ETH',
+            'hero-title': 'Carburant pour la nouvelle ère',
+            'hero-desc': 'Ether — le token de carburant premium de l\'écosystème SAFE. Stakez, gouvernez et accédez aux lancements exclusifs sur Solana.',
+            'hero-btn': '🚀 Commencer', 'hero-btn2': 'Explorer',
+            'stat-supply': 'Offre totale', 'stat-fee': 'Frais',
+            'stat-network': 'Réseau', 'stat-insurance': 'Fonds d\'assurance',
+            'eco-title': '🌐 Écosystème Ether',
+            'eco-sub': 'Quatre piliers qui font d\'Ether le carburant de SAFE',
+            'eco-trade-title': 'Échange', 'eco-trade-desc': 'Achetez et vendez ETH sur Meteora avec une liquidité profonde.',
+            'eco-trade-btn': 'Aller →',
+            'eco-staking-title': 'Staking', 'eco-staking-desc': 'Bloquez vos ETH et gagnez des revenus passifs avec un APR élevé.',
+            'eco-staking-btn': 'Aller →',
+            'eco-dao-title': 'DAO', 'eco-dao-desc': 'Votez sur les propositions et façonnez l\'avenir de l\'écosystème.',
+            'eco-dao-btn': 'Aller →',
+            'eco-bridge-title': 'Pont', 'eco-bridge-desc': 'Déplacez des actifs entre Solana et d\'autres réseaux.',
+            'eco-bridge-btn': 'Aller →',
+            'footer-twitter': '🐦 Twitter', 'footer-telegram': '💬 Telegram',
+            'footer-gecko': '📊 GeckoTerminal', 'footer-coingecko': '📈 CoinGecko',
+            'footer-copy': '© 2026 Ether Protocol. Construit sur Solana.'
+        },
+        de: {
+            'nav-home': 'Startseite', 'nav-trade': 'Handeln', 'nav-staking': 'Staking',
+            'nav-dao': 'DAO', 'nav-bridge': 'Brücke', 'nav-buy': 'ETH kaufen',
+            'hero-title': 'Treibstoff für die neue Ära',
+            'hero-desc': 'Ether — der Premium-Treibstoff-Token des SAFE-Ökosystems. Stake, verwalte und erhalte Zugang zu exklusiven Launches auf Solana.',
+            'hero-btn': '🚀 Loslegen', 'hero-btn2': 'Entdecken',
+            'stat-supply': 'Gesamtangebot', 'stat-fee': 'Gebühr',
+            'stat-network': 'Netzwerk', 'stat-insurance': 'Versicherungsfonds',
+            'eco-title': '🌐 Ether-Ökosystem',
+            'eco-sub': 'Vier Säulen, die Ether zum Treibstoff von SAFE machen',
+            'eco-trade-title': 'Handel', 'eco-trade-desc': 'Kaufen und verkaufen Sie ETH auf Meteora mit hoher Liquidität.',
+            'eco-trade-btn': 'Gehe →',
+            'eco-staking-title': 'Staking', 'eco-staking-desc': 'Sperre deine ETH und verdiene passives Einkommen mit hohem APR.',
+            'eco-staking-btn': 'Gehe →',
+            'eco-dao-title': 'DAO', 'eco-dao-desc': 'Stimme über Vorschläge ab und gestalte die Zukunft des Ökosystems.',
+            'eco-dao-btn': 'Gehe →',
+            'eco-bridge-title': 'Brücke', 'eco-bridge-desc': 'Bewege Vermögenswerte zwischen Solana und anderen Netzwerken.',
+            'eco-bridge-btn': 'Gehe →',
+            'footer-twitter': '🐦 Twitter', 'footer-telegram': '💬 Telegram',
+            'footer-gecko': '📊 GeckoTerminal', 'footer-coingecko': '📈 CoinGecko',
+            'footer-copy': '© 2026 Ether Protocol. Erbaut auf Solana.'
+        },
+        zh: {
+            'nav-home': '首页', 'nav-trade': '交易', 'nav-staking': '质押',
+            'nav-dao': 'DAO', 'nav-bridge': '跨链桥', 'nav-buy': '购买 ETH',
+            'hero-title': '新时代的燃料',
+            'hero-desc': 'Ether — SAFE 生态系统的优质燃料代币。在 Solana 上质押、治理和参与独家发布。',
+            'hero-btn': '🚀 开始', 'hero-btn2': '探索',
+            'stat-supply': '总供应量', 'stat-fee': '转账费',
+            'stat-network': '网络', 'stat-insurance': '保险基金',
+            'eco-title': '🌐 Ether 生态系统',
+            'eco-sub': '四大支柱使 Ether 成为 SAFE 的燃料',
+            'eco-trade-title': '交易', 'eco-trade-desc': '在 Meteora 上买卖 ETH，具有高流动性。',
+            'eco-trade-btn': '前往 →',
+            'eco-staking-title': '质押', 'eco-staking-desc': '锁定您的 ETH 并获得被动收入，APR 很高。',
+            'eco-staking-btn': '前往 →',
+            'eco-dao-title': 'DAO', 'eco-dao-desc': '对提案进行投票，塑造生态系统的未来。',
+            'eco-dao-btn': '前往 →',
+            'eco-bridge-title': '跨链桥', 'eco-bridge-desc': '在 Solana 和其他网络之间转移资产。',
+            'eco-bridge-btn': '前往 →',
+            'footer-twitter': '🐦 Twitter', 'footer-telegram': '💬 Telegram',
+            'footer-gecko': '📊 GeckoTerminal', 'footer-coingecko': '📈 CoinGecko',
+            'footer-copy': '© 2026 Ether Protocol. 基于 Solana 构建。'
+        },
+        ja: {
+            'nav-home': 'ホーム', 'nav-trade': '取引', 'nav-staking': 'ステーキング',
+            'nav-dao': 'DAO', 'nav-bridge': 'ブリッジ', 'nav-buy': 'ETHを購入',
+            'hero-title': '新時代の燃料',
+            'hero-desc': 'Ether — SAFEエコシステムのプレミアム燃料トークン。Solanaでステーキング、ガバナンス、独占ローンチへのアクセス。',
+            'hero-btn': '🚀 始める', 'hero-btn2': '探索する',
+            'stat-supply': '総供給量', 'stat-fee': '転送手数料',
+            'stat-network': 'ネットワーク', 'stat-insurance': '保険基金',
+            'eco-title': '🌐 Etherエコシステム',
+            'eco-sub': 'EtherをSAFEの燃料にする4つの柱',
+            'eco-trade-title': '取引', 'eco-trade-desc': 'MeteoraでETHを売買、高い流動性。',
+            'eco-trade-btn': '行く →',
+            'eco-staking-title': 'ステーキング', 'eco-staking-desc': 'ETHをロックして受動的収入を得る、高APR。',
+            'eco-staking-btn': '行く →',
+            'eco-dao-title': 'DAO', 'eco-dao-desc': '提案に投票し、エコシステムの未来を形作る。',
+            'eco-dao-btn': '行く →',
+            'eco-bridge-title': 'ブリッジ', 'eco-bridge-desc': 'Solanaと他のネットワーク間で資産を移動。',
+            'eco-bridge-btn': '行く →',
+            'footer-twitter': '🐦 Twitter', 'footer-telegram': '💬 Telegram',
+            'footer-gecko': '📊 GeckoTerminal', 'footer-coingecko': '📈 CoinGecko',
+            'footer-copy': '© 2026 Ether Protocol. Solana上に構築。'
+        },
+        ko: {
+            'nav-home': '홈', 'nav-trade': '거래', 'nav-staking': '스테이킹',
+            'nav-dao': 'DAO', 'nav-bridge': '브리지', 'nav-buy': 'ETH 구매',
+            'hero-title': '새로운 시대의 연료',
+            'hero-desc': 'Ether — SAFE 생태계의 프리미엄 연료 토큰. Solana에서 스테이킹, 거버넌스 및 독점 출시에 액세스하세요.',
+            'hero-btn': '🚀 시작하기', 'hero-btn2': '탐색',
+            'stat-supply': '총 공급량', 'stat-fee': '전송 수수료',
+            'stat-network': '네트워크', 'stat-insurance': '보험 기금',
+            'eco-title': '🌐 Ether 생태계',
+            'eco-sub': 'Ether를 SAFE의 연료로 만드는 4가지 기둥',
+            'eco-trade-title': '거래', 'eco-trade-desc': 'Meteora에서 높은 유동성으로 ETH를 사고팔 수 있습니다.',
+            'eco-trade-btn': '이동 →',
+            'eco-staking-title': '스테이킹', 'eco-staking-desc': 'ETH를 잠그고 높은 APR로 수동적 소득을 얻으세요.',
+            'eco-staking-btn': '이동 →',
+            'eco-dao-title': 'DAO', 'eco-dao-desc': '제안에 투표하고 생태계의 미래를 형성하세요.',
+            'eco-dao-btn': '이동 →',
+            'eco-bridge-title': '브리지', 'eco-bridge-desc': 'Solana와 다른 네트워크 간에 자산을 이동하세요.',
+            'eco-bridge-btn': '이동 →',
+            'footer-twitter': '🐦 Twitter', 'footer-telegram': '💬 Telegram',
+            'footer-gecko': '📊 GeckoTerminal', 'footer-coingecko': '📈 CoinGecko',
+            'footer-copy': '© 2026 Ether Protocol. Solana에서 구축됨.'
+        }
+    };
+
+    let currentLang = localStorage.getItem('etherLang') || 'en';
+
+    function applyLanguage(lang) {
+        if (!translations[lang]) return;
+        const t = translations[lang];
+        document.documentElement.lang = lang;
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (t[key]) {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = t[key];
+                } else {
+                    el.textContent = t[key];
+                }
+            }
+        });
+        document.getElementById('currentLangLabel').textContent = lang.toUpperCase();
+        document.querySelectorAll('.lang-dropdown button').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+        localStorage.setItem('etherLang', lang);
+        currentLang = lang;
+    }
+
+    document.getElementById('langToggle').addEventListener('click', (e) => {
+        e.stopPropagation();
+        document.getElementById('langDropdown').classList.toggle('show');
+    });
+    document.addEventListener('click', () => {
+        document.getElementById('langDropdown').classList.remove('show');
+    });
+    document.querySelectorAll('.lang-dropdown button').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            applyLanguage(btn.dataset.lang);
+            document.getElementById('langDropdown').classList.remove('show');
+        });
+    });
+    applyLanguage(currentLang);
+</script>
 </body>
 </html>
