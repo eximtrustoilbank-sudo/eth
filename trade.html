@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ether — Торги</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+        a { color: #4a90e2; text-decoration: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid #e8ecf0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: 900;
+            color: #1a1a1a;
+        }
+        .logo img { height: 36px; width: auto; }
+        .logo span { color: #4a90e2; }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .nav-links a { color: #4a5568; transition: 0.2s; }
+        .nav-links a:hover { color: #2b6cb0; }
+        .nav-links .active { color: #2b6cb0; font-weight: 600; }
+        .btn-buy {
+            background: #4a90e2;
+            color: #fff !important;
+            padding: 8px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+        .btn-buy:hover { background: #2b6cb0; transform: scale(1.02); }
+        .page-header { text-align: center; padding: 40px 0 20px; }
+        .page-header h1 { font-size: 2.5rem; font-weight: 900; color: #1a1a1a; }
+        .page-header h1 span { color: #4a90e2; }
+        .page-header p { color: #4a5568; }
+
+        .swap-widget {
+            max-width: 440px;
+            margin: 0 auto 30px;
+            background: #fafbfc;
+            border: 1px solid #e8ecf0;
+            border-radius: 24px;
+            padding: 24px;
+        }
+        .swap-widget .row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #4a5568;
+            margin-bottom: 4px;
+        }
+        .swap-widget .input-box {
+            background: #ffffff;
+            border: 1px solid #e8ecf0;
+            border-radius: 14px;
+            padding: 14px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .swap-widget .input-box input {
+            background: transparent;
+            border: none;
+            font-size: 1.4rem;
+            font-weight: 700;
+            width: 70%;
+            outline: none;
+            color: #1a1a1a;
+        }
+        .swap-widget .input-box .token {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+        .swap-widget .input-box .token .dot {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .dot-eth { background: linear-gradient(135deg, #4a90e2, #f5a623); }
+        .dot-usdc { background: #2775ca; }
+        .swap-arrow { text-align: center; font-size: 1.4rem; color: #4a90e2; margin: 4px 0; }
+        .btn-swap {
+            width: 100%;
+            padding: 14px;
+            border-radius: 60px;
+            border: none;
+            background: #4a90e2;
+            color: #fff;
+            font-weight: 800;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-swap:hover { background: #2b6cb0; transform: scale(1.01); }
+        .swap-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: #4a5568;
+            margin-top: 10px;
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 30px 0 12px;
+            color: #1a1a1a;
+        }
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 8px;
+            padding-bottom: 20px;
+        }
+        .tool-card {
+            background: #fafbfc;
+            border: 1px solid #e8ecf0;
+            border-radius: 12px;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #1a1a1a;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        .tool-card:hover { border-color: #4a90e2; background: #f0f4ff; }
+        .tool-card .icon { font-size: 16px; }
+
+        footer {
+            padding: 30px 0;
+            border-top: 1px solid #e8ecf0;
+            text-align: center;
+            color: #4a5568;
+            font-size: 0.85rem;
+        }
+        footer .links a { color: #4a5568; margin: 0 12px; font-size: 13px; }
+        footer .links a:hover { color: #2b6cb0; }
+
+        @media (max-width: 700px) {
+            .header-inner { flex-direction: column; align-items: stretch; text-align: center; }
+            .nav-links { justify-content: center; }
+            .page-header h1 { font-size: 1.8rem; }
+            .tools-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-inner">
+        <a href="index.html" class="logo">
+            <img src="https://raw.githubusercontent.com/eximtrustoilbank-sudo/eth/refs/heads/main/eth_logo.png" alt="Ether">
+            <span>Ether</span>
+        </a>
+        <div class="nav-links">
+            <a href="index.html">Главная</a>
+            <a href="trade.html" class="active">Торги</a>
+            <a href="staking.html">Стейкинг</a>
+            <a href="dao.html">Управление</a>
+            <a href="bridge.html">Мост</a>
+            <a href="#" class="btn-buy">Купить ETH</a>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="page-header">
+        <h1>📊 <span>Торговая платформа</span></h1>
+        <p>Покупай, продавай и управляй своими ETH в реальном времени</p>
+    </div>
+
+    <div class="swap-widget">
+        <div class="row"><span>Отдаёте</span><span>Баланс: 12,450 ETH</span></div>
+        <div class="input-box">
+            <input type="text" value="1000" />
+            <div class="token"><span class="dot dot-eth"></span> ETH</div>
+        </div>
+        <div class="swap-arrow">⬇️</div>
+        <div class="row"><span>Получаете</span><span>Баланс: 10.00 USDC</span></div>
+        <div class="input-box">
+            <input type="text" value="10.00" placeholder="0.00" />
+            <div class="token"><span class="dot dot-usdc"></span> USDC</div>
+        </div>
+        <button class="btn-swap" onclick="window.open('#', '_blank')">🚀 Обменять ETH → USDC</button>
+        <div class="swap-info"><span>Курс: 1 ETH ≈ 0.01 USDC</span><span>Комиссия: 0.3%</span></div>
+    </div>
+
+    <div class="section-title">⚡ Быстрая торговля</div>
+    <div class="tools-grid">
+        <a href="https://jup.ag/" target="_blank" class="tool-card"><span class="icon">📈</span> Рыночный ордер</a>
+        <a href="https://jup.ag/limit" target="_blank" class="tool-card"><span class="icon">📉</span> Лимитный ордер</a>
+        <a href="https://www.binance.com/en/trade/" target="_blank" class="tool-card"><span class="icon">🛑</span> Стоп-лосс</a>
+        <a href="https://www.binance.com/en/trade/" target="_blank" class="tool-card"><span class="icon">🎯</span> Тейк-профит</a>
+        <a href="https://www.bybit.com/trade/" target="_blank" class="tool-card"><span class="icon">🔄</span> OCO-ордер</a>
+        <a href="https://www.kucoin.com/trade/" target="_blank" class="tool-card"><span class="icon">🧊</span> Айсберг-ордер</a>
+    </div>
+
+    <div class="section-title">🤖 Автоматические стратегии</div>
+    <div class="tools-grid">
+        <a href="https://jup.ag/dca" target="_blank" class="tool-card"><span class="icon">📊</span> DCA (Усреднение)</a>
+        <a href="https://jup.ag/twap" target="_blank" class="tool-card"><span class="icon">⏱️</span> TWAP</a>
+        <a href="https://www.binance.com/en/grid-bot" target="_blank" class="tool-card"><span class="icon">📦</span> Сеточная торговля</a>
+        <a href="https://www.kucoin.com/" target="_blank" class="tool-card"><span class="icon">🔁</span> Ребалансировка</a>
+        <a href="https://arbitrum.io/" target="_blank" class="tool-card"><span class="icon">⚡</span> Арбитраж</a>
+        <a href="https://dexscreener.com/" target="_blank" class="tool-card"><span class="icon">🎯</span> Снайпер</a>
+    </div>
+
+    <div class="section-title">📊 Аналитика рынка</div>
+    <div class="tools-grid">
+        <a href="https://www.tradingview.com/" target="_blank" class="tool-card"><span class="icon">📉</span> График цен</a>
+        <a href="https://coingecko.com/" target="_blank" class="tool-card"><span class="icon">📊</span> Объёмы</a>
+        <a href="https://whale-tracker.com/" target="_blank" class="tool-card"><span class="icon">👥</span> Активность китов</a>
+        <a href="https://cryptopanic.com/" target="_blank" class="tool-card"><span class="icon">📰</span> Новости рынка</a>
+        <a href="https://www.coinpredictor.ai/" target="_blank" class="tool-card"><span class="icon">🔮</span> Прогноз AI</a>
+        <a href="https://solscan.io/" target="_blank" class="tool-card"><span class="icon">📋</span> История сделок</a>
+    </div>
+
+    <div class="section-title">🛠️ Полезные инструменты</div>
+    <div class="tools-grid">
+        <a href="https://www.calculator.net/" target="_blank" class="tool-card"><span class="icon">🧮</span> Калькулятор</a>
+        <a href="https://www.coingecko.com/en/converter" target="_blank" class="tool-card"><span class="icon">📈</span> Конвертер</a>
+        <a href="https://debank.com/" target="_blank" class="tool-card"><span class="icon">📊</span> Портфель</a>
+        <a href="https://cryptocurrencyalerting.com/" target="_blank" class="tool-card"><span class="icon">🔔</span> Оповещения</a>
+        <a href="https://solscan.io/" target="_blank" class="tool-card"><span class="icon">📋</span> История</a>
+        <a href="https://coingecko.com/" target="_blank" class="tool-card"><span class="icon">📤</span> Экспорт</a>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="links">
+            <a href="index.html">Главная</a>
+            <a href="trade.html">Торги</a>
+            <a href="staking.html">Стейкинг</a>
+            <a href="dao.html">Управление</a>
+            <a href="bridge.html">Мост</a>
+        </div>
+        <p>📜 63GqfRg2EUox4enPniaR5oyhsKJHJGRSuys6xUPBoqGq</p>
+        <p style="margin-top:6px;font-size:0.75rem;color:#a0aec0;">© 2026 Ether Protocol — Торгуй с умом на Solana</p>
+    </div>
+</footer>
+
+</body>
+</html>
