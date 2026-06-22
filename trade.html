@@ -14,7 +14,7 @@
             line-height: 1.6;
         }
         a { color: #4a90e2; text-decoration: none; }
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
         header {
             padding: 20px 0;
@@ -76,6 +76,16 @@
         .page-header h1 { font-size: 2.5rem; font-weight: 900; color: #1a1a1a; }
         .page-header h1 span { color: #4a90e2; }
         .page-header p { color: #4a5568; }
+
+        .page-banner {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 24px;
+            margin: 0 auto 30px;
+            display: block;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+        }
 
         .swap-widget {
             max-width: 440px;
@@ -154,7 +164,6 @@
             margin: 30px 0 12px;
             color: #1a1a1a;
         }
-
         .tools-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -193,6 +202,7 @@
             .nav-links { justify-content: center; }
             .page-header h1 { font-size: 1.8rem; }
             .tools-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+            .page-banner { max-height: 200px; }
         }
     </style>
 </head>
@@ -201,7 +211,7 @@
 <header>
     <div class="container header-inner">
         <a href="index.html" class="logo">
-            <img src="https://raw.githubusercontent.com/eximtrustoilbank-sudo/eth/refs/heads/main/eth_logo.png" alt="Ether">
+            <img src="https://raw.githubusercontent.com/eximtrustoilbank-sudo/eth/main/eth_logo.png" alt="Ether">
             <span>Ether</span>
         </a>
         <div class="nav-links">
@@ -234,6 +244,8 @@
         <p data-i18n="page-desc">Buy, sell and manage your ETH in real time</p>
     </div>
 
+    <img src="https://raw.githubusercontent.com/eximtrustoilbank-sudo/eth/main/trade_eth.png" alt="Ether Trading" class="page-banner">
+
     <div class="swap-widget">
         <div class="row"><span data-i18n="swap-from">From</span><span data-i18n="swap-balance">Balance: 12,450 ETH</span></div>
         <div class="input-box">
@@ -251,16 +263,44 @@
     </div>
 
     <div class="section-title" data-i18n="section1">⚡ Quick Trade</div>
-    <div class="tools-grid" id="quickTradeGrid"></div>
+    <div class="tools-grid">
+        <a href="https://jup.ag/" target="_blank" class="tool-card"><span class="icon">📈</span> Market Order</a>
+        <a href="https://jup.ag/limit" target="_blank" class="tool-card"><span class="icon">📉</span> Limit Order</a>
+        <a href="https://www.binance.com/en/trade/" target="_blank" class="tool-card"><span class="icon">🛑</span> Stop-Loss</a>
+        <a href="https://www.binance.com/en/trade/" target="_blank" class="tool-card"><span class="icon">🎯</span> Take-Profit</a>
+        <a href="https://www.bybit.com/trade/" target="_blank" class="tool-card"><span class="icon">🔄</span> OCO Order</a>
+        <a href="https://www.kucoin.com/trade/" target="_blank" class="tool-card"><span class="icon">🧊</span> Iceberg Order</a>
+    </div>
 
     <div class="section-title" data-i18n="section2">🤖 Auto Strategies</div>
-    <div class="tools-grid" id="autoGrid"></div>
+    <div class="tools-grid">
+        <a href="https://jup.ag/dca" target="_blank" class="tool-card"><span class="icon">📊</span> DCA (Averaging)</a>
+        <a href="https://jup.ag/twap" target="_blank" class="tool-card"><span class="icon">⏱️</span> TWAP</a>
+        <a href="https://www.binance.com/en/grid-bot" target="_blank" class="tool-card"><span class="icon">📦</span> Grid Trading</a>
+        <a href="https://www.kucoin.com/" target="_blank" class="tool-card"><span class="icon">🔁</span> Rebalancing</a>
+        <a href="https://arbitrum.io/" target="_blank" class="tool-card"><span class="icon">⚡</span> Arbitrage</a>
+        <a href="https://dexscreener.com/" target="_blank" class="tool-card"><span class="icon">🎯</span> Sniper</a>
+    </div>
 
     <div class="section-title" data-i18n="section3">📊 Market Analytics</div>
-    <div class="tools-grid" id="analyticsGrid"></div>
+    <div class="tools-grid">
+        <a href="https://www.tradingview.com/" target="_blank" class="tool-card"><span class="icon">📉</span> Price Chart</a>
+        <a href="https://coingecko.com/" target="_blank" class="tool-card"><span class="icon">📊</span> Volumes</a>
+        <a href="https://whale-tracker.com/" target="_blank" class="tool-card"><span class="icon">👥</span> Whale Activity</a>
+        <a href="https://cryptopanic.com/" target="_blank" class="tool-card"><span class="icon">📰</span> Market News</a>
+        <a href="https://www.coinpredictor.ai/" target="_blank" class="tool-card"><span class="icon">🔮</span> AI Prediction</a>
+        <a href="https://solscan.io/" target="_blank" class="tool-card"><span class="icon">📋</span> Trade History</a>
+    </div>
 
     <div class="section-title" data-i18n="section4">🛠️ Tools</div>
-    <div class="tools-grid" id="toolsGrid"></div>
+    <div class="tools-grid">
+        <a href="https://www.calculator.net/" target="_blank" class="tool-card"><span class="icon">🧮</span> Calculator</a>
+        <a href="https://www.coingecko.com/en/converter" target="_blank" class="tool-card"><span class="icon">📈</span> Converter</a>
+        <a href="https://debank.com/" target="_blank" class="tool-card"><span class="icon">📊</span> Portfolio</a>
+        <a href="https://cryptocurrencyalerting.com/" target="_blank" class="tool-card"><span class="icon">🔔</span> Alerts</a>
+        <a href="https://solscan.io/" target="_blank" class="tool-card"><span class="icon">📋</span> History</a>
+        <a href="https://coingecko.com/" target="_blank" class="tool-card"><span class="icon">📤</span> Export</a>
+    </div>
 </div>
 
 <footer>
@@ -279,145 +319,9 @@
 
 <script>
     // ============================================================
-    // 10,000+ УНИКАЛЬНЫХ ФУНКЦИЙ — РАЗНЫЕ КОМПАНИИ
+    // 8 ЯЗЫКОВ — ПЕРЕВОДЧИК
     // ============================================================
 
-    // ——— БАЗОВЫЕ СПИСКИ ДЛЯ ГЕНЕРАЦИИ ———
-    const quickTrade = [
-        ['Market Order', 'https://jup.ag/', '📈'],
-        ['Limit Order', 'https://jup.ag/limit', '📉'],
-        ['Stop-Loss', 'https://www.binance.com/en/trade/', '🛑'],
-        ['Take-Profit', 'https://www.binance.com/en/trade/', '🎯'],
-        ['OCO Order', 'https://www.bybit.com/trade/', '🔄'],
-        ['Iceberg Order', 'https://www.kucoin.com/trade/', '🧊']
-    ];
-
-    const autoStrategies = [
-        ['DCA (Averaging)', 'https://jup.ag/dca', '📊'],
-        ['TWAP', 'https://jup.ag/twap', '⏱️'],
-        ['Grid Trading', 'https://www.binance.com/en/grid-bot', '📦'],
-        ['Rebalancing', 'https://www.kucoin.com/', '🔁'],
-        ['Arbitrage', 'https://arbitrum.io/', '⚡'],
-        ['Sniper', 'https://dexscreener.com/', '🎯']
-    ];
-
-    const analytics = [
-        ['Price Chart', 'https://www.tradingview.com/', '📉'],
-        ['Volumes', 'https://coingecko.com/', '📊'],
-        ['Whale Activity', 'https://whale-tracker.com/', '👥'],
-        ['Market News', 'https://cryptopanic.com/', '📰'],
-        ['AI Prediction', 'https://www.coinpredictor.ai/', '🔮'],
-        ['Trade History', 'https://solscan.io/', '📋']
-    ];
-
-    const tools = [
-        ['Calculator', 'https://www.calculator.net/', '🧮'],
-        ['Converter', 'https://www.coingecko.com/en/converter', '📈'],
-        ['Portfolio', 'https://debank.com/', '📊'],
-        ['Alerts', 'https://cryptocurrencyalerting.com/', '🔔'],
-        ['History', 'https://solscan.io/', '📋'],
-        ['Export', 'https://coingecko.com/', '📤']
-    ];
-
-    // ——— ГЕНЕРАТОР 10,000+ УНИКАЛЬНЫХ ССЫЛОК ———
-    function generateUniqueLinks(baseList, count, prefix) {
-        const links = [];
-        const companies = [
-            'Binance', 'Coinbase', 'Kraken', 'KuCoin', 'Bybit', 'Gate.io', 'Huobi', 'Bitfinex', 'OKX', 'MEXC',
-            'Jupiter', 'Raydium', 'Orca', 'Meteora', 'Serum', 'Saber', 'Mercurial', 'Sanctum', 'Kamino', 'Drift',
-            'Wormhole', 'LayerZero', 'Axelar', 'deBridge', 'Portal', 'Mayan', 'Hyperlane', 'Celer', 'Teleport', 'Allbridge',
-            'TradingView', 'DexScreener', 'DexTools', 'Birdeye', 'GeckoTerminal', 'Solscan', 'DefiLlama', 'CoinGecko', 'CoinMarketCap', 'Messari'
-        ];
-        const actions = ['Swap', 'Buy', 'Sell', 'Bridge', 'Farm', 'Stake', 'Lend', 'Borrow', 'Hedge', 'Arbitrage', 'Snipe', 'Grid', 'DCA', 'TWAP', 'VWAP'];
-        const suffixes = ['Pro', 'Elite', 'Prime', 'Lite', 'Max', 'Plus', 'AI', 'Smart', 'Turbo', 'Ultra', 'X', 'Z', 'V2', 'Beta', 'Alpha'];
-        for (let i = 0; i < count; i++) {
-            const company = companies[i % companies.length];
-            const action = actions[i % actions.length];
-            const suffix = suffixes[i % suffixes.length];
-            const name = `${prefix} ${company} ${action} ${suffix} #${i+1}`;
-            const url = `https://${company.toLowerCase().replace(/\s/g, '')}.com/`;
-            links.push({ name, url, icon: '🔹' });
-        }
-        return links;
-    }
-
-    // ——— ГЕНЕРИРУЕМ 10,000+ ———
-    const allLinks = generateUniqueLinks([], 10200, 'Tool');
-
-    // ——— РЕНДЕР СЕТОК ———
-    function renderGrid(id, data) {
-        const el = document.getElementById(id);
-        if (!el) return;
-        el.innerHTML = data.map(item => `
-            <a href="${item[1]}" target="_blank" class="tool-card">
-                <span class="icon">${item[2]}</span>
-                <span data-i18n="${item[0].replace(/\s/g, '')}">${item[0]}</span>
-            </a>
-        `).join('');
-    }
-
-    renderGrid('quickTradeGrid', quickTrade);
-    renderGrid('autoGrid', autoStrategies);
-    renderGrid('analyticsGrid', analytics);
-    renderGrid('toolsGrid', tools);
-
-    // ——— ДОБАВЛЯЕМ 10,000+ ССЫЛОК ВНИЗУ СТРАНИЦЫ ———
-    const megaSection = document.createElement('div');
-    megaSection.className = 'container';
-    megaSection.style.marginTop = '40px';
-    megaSection.style.borderTop = '2px solid #e8ecf0';
-    megaSection.style.paddingTop = '30px';
-
-    const megaTitle = document.createElement('h2');
-    megaTitle.style.textAlign = 'center';
-    megaTitle.style.fontSize = '1.8rem';
-    megaTitle.style.fontWeight = '800';
-    megaTitle.style.marginBottom = '8px';
-    megaTitle.textContent = '🔗 10,000+ Trading Tools';
-    megaSection.appendChild(megaTitle);
-
-    const megaSub = document.createElement('p');
-    megaSub.style.textAlign = 'center';
-    megaSub.style.color = '#4a5568';
-    megaSub.style.marginBottom = '20px';
-    megaSub.textContent = 'All links lead to different companies and services';
-    megaSection.appendChild(megaSub);
-
-    const megaGrid = document.createElement('div');
-    megaGrid.style.display = 'grid';
-    megaGrid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(180px, 1fr))';
-    megaGrid.style.gap = '6px';
-    megaGrid.style.paddingBottom = '30px';
-
-    // Показываем первые 2000 для производительности (все 10,000+ в коде)
-    const displayLinks = allLinks.slice(0, 2000);
-    displayLinks.forEach(item => {
-        const card = document.createElement('a');
-        card.href = item.url;
-        card.target = '_blank';
-        card.style.cssText = `
-            background: #fafbfc;
-            border: 1px solid #e8ecf0;
-            border-radius: 8px;
-            padding: 6px 10px;
-            font-size: 11px;
-            color: #4a5568;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: 0.15s;
-            text-decoration: none;
-        `;
-        card.onmouseover = function() { this.style.borderColor = '#4a90e2'; this.style.background = '#f0f4ff'; };
-        card.onmouseout = function() { this.style.borderColor = '#e8ecf0'; this.style.background = '#fafbfc'; };
-        card.innerHTML = `<span style="font-size:14px;">${item.icon}</span> ${item.name}`;
-        megaGrid.appendChild(card);
-    });
-
-    megaSection.appendChild(megaGrid);
-    document.querySelector('.container').appendChild(megaSection);
-
-    // ——— ПЕРЕВОДЧИК (8 ЯЗЫКОВ) ———
     const translations = {
         en: {
             'nav-home': 'Home', 'nav-trade': 'Trade', 'nav-staking': 'Staking',
