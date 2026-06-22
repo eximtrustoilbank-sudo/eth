@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ether — The Premium Fuel of SAFE</title>
+    <title>Ether — The Future of Finance</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -16,6 +16,7 @@
         a { color: #4a90e2; text-decoration: none; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
+        /* ——— HEADER ——— */
         header {
             padding: 20px 0;
             border-bottom: 1px solid #e8ecf0;
@@ -63,6 +64,7 @@
         }
         .btn-buy:hover { background: #2b6cb0; transform: scale(1.02); }
 
+        /* ——— LANGUAGE SWITCHER ——— */
         .lang-switcher { position: relative; display: inline-block; margin-left: 4px; }
         .lang-btn { background: #f0f2f5; border: 1px solid #e8ecf0; color: #1a1a1a; padding: 4px 12px; border-radius: 40px; font-size: 12px; cursor: pointer; font-weight: 600; transition: 0.2s; display: flex; align-items: center; gap: 4px; }
         .lang-btn:hover { background: #e8ecf0; border-color: #4a90e2; }
@@ -72,13 +74,22 @@
         .lang-dropdown button:hover { background: #f0f4ff; color: #2b6cb0; }
         .lang-dropdown button.active { color: #4a90e2; font-weight: 700; }
 
+        /* ——— HERO ——— */
         .hero {
-            padding: 80px 0 60px;
+            padding: 60px 0 40px;
             text-align: center;
-            background: linear-gradient(180deg, #f7fafc 0%, #ffffff 100%);
+            background: #f7fafc;
+        }
+        .hero-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 24px;
+            margin-bottom: 32px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.06);
         }
         .hero h1 {
-            font-size: clamp(2.8rem, 8vw, 4.8rem);
+            font-size: clamp(2.6rem, 7vw, 4.2rem);
             font-weight: 900;
             line-height: 1.05;
             letter-spacing: -2px;
@@ -92,34 +103,130 @@
             max-width: 600px;
             margin: 0 auto 32px;
         }
-        .hero-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
-        .btn-primary { background: #4a90e2; color: #fff !important; font-weight: 700; padding: 14px 44px; border-radius: 60px; font-size: 1.05rem; display: inline-block; transition: 0.2s; border: none; cursor: pointer; }
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+        }
+        .btn-primary {
+            background: #4a90e2;
+            color: #fff !important;
+            font-weight: 700;
+            padding: 14px 44px;
+            border-radius: 60px;
+            font-size: 1.05rem;
+            display: inline-block;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+        }
         .btn-primary:hover { background: #2b6cb0; transform: scale(1.02); box-shadow: 0 8px 30px rgba(74,144,226,0.3); }
-        .btn-secondary { background: #e8ecf0; color: #1a1a1a !important; font-weight: 600; padding: 14px 34px; border-radius: 60px; font-size: 1.05rem; transition: 0.2s; display: inline-block; }
+        .btn-secondary {
+            background: #e8ecf0;
+            color: #1a1a1a !important;
+            font-weight: 600;
+            padding: 14px 34px;
+            border-radius: 60px;
+            font-size: 1.05rem;
+            transition: 0.2s;
+            display: inline-block;
+        }
         .btn-secondary:hover { background: #d2d8e0; }
 
-        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px; padding: 40px 0 60px; max-width: 900px; margin: 0 auto; }
-        .stat-item { text-align: center; padding: 20px; border: 1px solid #e8ecf0; border-radius: 16px; background: #fafbfc; }
-        .stat-item .number { font-size: 1.8rem; font-weight: 800; color: #4a90e2; }
-        .stat-item .label { font-size: 0.85rem; color: #4a5568; margin-top: 4px; }
+        /* ——— STATS ——— */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 20px;
+            padding: 40px 0 50px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #e8ecf0;
+            border-radius: 16px;
+            background: #fafbfc;
+        }
+        .stat-item .number {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #4a90e2;
+        }
+        .stat-item .label {
+            font-size: 0.85rem;
+            color: #4a5568;
+            margin-top: 4px;
+        }
 
-        .ecosystem { padding: 40px 0 60px; }
-        .ecosystem h2 { text-align: center; font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; }
-        .ecosystem .sub { text-align: center; color: #4a5568; max-width: 500px; margin: 0 auto 40px; }
-        .eco-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
-        .eco-card { background: #fafbfc; border: 1px solid #e8ecf0; padding: 28px 20px 24px; border-radius: 20px; text-align: center; transition: 0.25s; }
+        /* ——— ECOSYSTEM ——— */
+        .ecosystem { padding: 20px 0 60px; }
+        .ecosystem h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .ecosystem .sub {
+            text-align: center;
+            color: #4a5568;
+            max-width: 500px;
+            margin: 0 auto 40px;
+        }
+        .eco-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+        .eco-card {
+            background: #fafbfc;
+            border: 1px solid #e8ecf0;
+            padding: 28px 20px 24px;
+            border-radius: 20px;
+            text-align: center;
+            transition: 0.25s;
+        }
         .eco-card:hover { border-color: #4a90e2; transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.04); }
         .eco-card .icon { font-size: 2.4rem; margin-bottom: 10px; }
         .eco-card h3 { font-size: 1.1rem; margin-bottom: 4px; }
         .eco-card p { font-size: 0.9rem; color: #4a5568; }
-        .eco-card .link-btn { display: inline-block; margin-top: 12px; font-weight: 600; color: #4a90e2; font-size: 0.9rem; }
+        .eco-card .link-btn {
+            display: inline-block;
+            margin-top: 12px;
+            font-weight: 600;
+            color: #4a90e2;
+            font-size: 0.9rem;
+        }
         .eco-card .link-btn:hover { color: #2b6cb0; }
 
         .contract-box { text-align: center; padding: 20px 0 40px; }
-        .contract-box code { background: #f0f2f5; padding: 10px 24px; border-radius: 60px; font-family: monospace; font-size: 0.85rem; color: #1a1a1a; border: 1px solid #e8ecf0; display: inline-block; word-break: break-all; max-width: 100%; }
+        .contract-box code {
+            background: #f0f2f5;
+            padding: 10px 24px;
+            border-radius: 60px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #1a1a1a;
+            border: 1px solid #e8ecf0;
+            display: inline-block;
+            word-break: break-all;
+            max-width: 100%;
+        }
 
-        footer { padding: 30px 0; border-top: 1px solid #e8ecf0; text-align: center; color: #4a5568; font-size: 0.85rem; }
-        footer .socials a { color: #4a5568; margin: 0 14px; font-size: 14px; }
+        footer {
+            padding: 30px 0;
+            border-top: 1px solid #e8ecf0;
+            text-align: center;
+            color: #4a5568;
+            font-size: 0.85rem;
+        }
+        footer .socials a {
+            color: #4a5568;
+            margin: 0 14px;
+            font-size: 14px;
+        }
         footer .socials a:hover { color: #2b6cb0; }
 
         @media (max-width: 700px) {
@@ -127,6 +234,7 @@
             .nav-links { justify-content: center; }
             .hero h1 { font-size: 2.4rem; }
             .eco-grid { grid-template-columns: 1fr 1fr; }
+            .hero-image { border-radius: 16px; }
         }
         @media (max-width: 480px) { .eco-grid { grid-template-columns: 1fr; } }
     </style>
@@ -136,7 +244,7 @@
 <header>
     <div class="container header-inner">
         <a href="index.html" class="logo">
-            <img src="https://raw.githubusercontent.com/eximtrustoilbank-sudo/eth/refs/heads/main/eth_logo.png" alt="Ether">
+            <img src="https://raw.githubusercontent.com/eximtrustoilbank-sudo/eth/main/eth_logo.png" alt="Ether">
             <span>Ether</span>
         </a>
         <div class="nav-links">
@@ -165,8 +273,9 @@
 
 <section class="hero">
     <div class="container">
-        <h1 data-i18n="hero-title">Fuel for the <span class="highlight">new era</span></h1>
-        <p data-i18n="hero-desc">Ether — the premium fuel token of the SAFE ecosystem. Stake, govern, and access exclusive launches on Solana.</p>
+        <img src="https://raw.githubusercontent.com/eximtrustoilbank-sudo/eth/main/index_eth.jpg" alt="Ether — The Future of Finance" class="hero-image">
+        <h1 data-i18n="hero-title">The future of <span class="highlight">finance</span> is open</h1>
+        <p data-i18n="hero-desc">Ether is the premium fuel token of the SAFE ecosystem. Move money, earn yield, and govern the network — all on Solana.</p>
         <div class="hero-buttons">
             <a href="#" class="btn-primary" data-i18n="hero-btn">🚀 Get Started</a>
             <a href="#ecosystem" class="btn-secondary" data-i18n="hero-btn2">Explore</a>
@@ -237,8 +346,8 @@
         en: {
             'nav-home': 'Home', 'nav-trade': 'Trade', 'nav-staking': 'Staking',
             'nav-dao': 'DAO', 'nav-bridge': 'Bridge', 'nav-buy': 'Buy ETH',
-            'hero-title': 'Fuel for the new era',
-            'hero-desc': 'Ether — the premium fuel token of the SAFE ecosystem. Stake, govern, and access exclusive launches on Solana.',
+            'hero-title': 'The future of finance is open',
+            'hero-desc': 'Ether is the premium fuel token of the SAFE ecosystem. Move money, earn yield, and govern the network — all on Solana.',
             'hero-btn': '🚀 Get Started', 'hero-btn2': 'Explore',
             'stat-supply': 'Total Supply', 'stat-fee': 'Transfer Fee',
             'stat-network': 'Network', 'stat-insurance': 'Insurance Fund',
@@ -259,8 +368,8 @@
         ru: {
             'nav-home': 'Главная', 'nav-trade': 'Торги', 'nav-staking': 'Стейкинг',
             'nav-dao': 'Управление', 'nav-bridge': 'Мост', 'nav-buy': 'Купить ETH',
-            'hero-title': 'Топливо для новой эры',
-            'hero-desc': 'Ether — премиальный токен экосистемы SAFE. Стейкай, управляй и получай доступ к эксклюзивным запускам на Solana.',
+            'hero-title': 'Будущее финансов открыто',
+            'hero-desc': 'Ether — премиальный токен экосистемы SAFE. Перемещайте деньги, получайте доход и управляйте сетью — всё на Solana.',
             'hero-btn': '🚀 Начать', 'hero-btn2': 'Исследовать',
             'stat-supply': 'Общий запас', 'stat-fee': 'Комиссия',
             'stat-network': 'Сеть', 'stat-insurance': 'Страховой фонд',
@@ -281,8 +390,8 @@
         es: {
             'nav-home': 'Inicio', 'nav-trade': 'Comerciar', 'nav-staking': 'Staking',
             'nav-dao': 'DAO', 'nav-bridge': 'Puente', 'nav-buy': 'Comprar ETH',
-            'hero-title': 'Combustible para la nueva era',
-            'hero-desc': 'Ether — el token de combustible premium del ecosistema SAFE. Stakea, gobierna y accede a lanzamientos exclusivos en Solana.',
+            'hero-title': 'El futuro de las finanzas es abierto',
+            'hero-desc': 'Ether es el token de combustible premium del ecosistema SAFE. Mueve dinero, obtén rendimiento y gobierna la red — todo en Solana.',
             'hero-btn': '🚀 Comenzar', 'hero-btn2': 'Explorar',
             'stat-supply': 'Suministro total', 'stat-fee': 'Comisión',
             'stat-network': 'Red', 'stat-insurance': 'Fondo de seguro',
@@ -303,8 +412,8 @@
         fr: {
             'nav-home': 'Accueil', 'nav-trade': 'Échanger', 'nav-staking': 'Staking',
             'nav-dao': 'DAO', 'nav-bridge': 'Pont', 'nav-buy': 'Acheter ETH',
-            'hero-title': 'Carburant pour la nouvelle ère',
-            'hero-desc': 'Ether — le token de carburant premium de l\'écosystème SAFE. Stakez, gouvernez et accédez aux lancements exclusifs sur Solana.',
+            'hero-title': 'L\'avenir de la finance est ouvert',
+            'hero-desc': 'Ether est le token de carburant premium de l\'écosystème SAFE. Déplacez de l\'argent, gagnez du rendement et gouvernez le réseau — tout sur Solana.',
             'hero-btn': '🚀 Commencer', 'hero-btn2': 'Explorer',
             'stat-supply': 'Offre totale', 'stat-fee': 'Frais',
             'stat-network': 'Réseau', 'stat-insurance': 'Fonds d\'assurance',
@@ -325,8 +434,8 @@
         de: {
             'nav-home': 'Startseite', 'nav-trade': 'Handeln', 'nav-staking': 'Staking',
             'nav-dao': 'DAO', 'nav-bridge': 'Brücke', 'nav-buy': 'ETH kaufen',
-            'hero-title': 'Treibstoff für die neue Ära',
-            'hero-desc': 'Ether — der Premium-Treibstoff-Token des SAFE-Ökosystems. Stake, verwalte und erhalte Zugang zu exklusiven Launches auf Solana.',
+            'hero-title': 'Die Zukunft des Finanzwesens ist offen',
+            'hero-desc': 'Ether ist der Premium-Treibstoff-Token des SAFE-Ökosystems. Bewege Geld, verdiene Rendite und verwalte das Netzwerk — alles auf Solana.',
             'hero-btn': '🚀 Loslegen', 'hero-btn2': 'Entdecken',
             'stat-supply': 'Gesamtangebot', 'stat-fee': 'Gebühr',
             'stat-network': 'Netzwerk', 'stat-insurance': 'Versicherungsfonds',
@@ -347,8 +456,8 @@
         zh: {
             'nav-home': '首页', 'nav-trade': '交易', 'nav-staking': '质押',
             'nav-dao': 'DAO', 'nav-bridge': '跨链桥', 'nav-buy': '购买 ETH',
-            'hero-title': '新时代的燃料',
-            'hero-desc': 'Ether — SAFE 生态系统的优质燃料代币。在 Solana 上质押、治理和参与独家发布。',
+            'hero-title': '金融的未来是开放的',
+            'hero-desc': 'Ether 是 SAFE 生态系统的优质燃料代币。在 Solana 上转移资金、赚取收益和管理网络。',
             'hero-btn': '🚀 开始', 'hero-btn2': '探索',
             'stat-supply': '总供应量', 'stat-fee': '转账费',
             'stat-network': '网络', 'stat-insurance': '保险基金',
@@ -369,8 +478,8 @@
         ja: {
             'nav-home': 'ホーム', 'nav-trade': '取引', 'nav-staking': 'ステーキング',
             'nav-dao': 'DAO', 'nav-bridge': 'ブリッジ', 'nav-buy': 'ETHを購入',
-            'hero-title': '新時代の燃料',
-            'hero-desc': 'Ether — SAFEエコシステムのプレミアム燃料トークン。Solanaでステーキング、ガバナンス、独占ローンチへのアクセス。',
+            'hero-title': '金融の未来は開かれている',
+            'hero-desc': 'Ether は SAFE エコシステムのプレミアム燃料トークンです。Solana で送金、収益獲得、ネットワークガバナンス。',
             'hero-btn': '🚀 始める', 'hero-btn2': '探索する',
             'stat-supply': '総供給量', 'stat-fee': '転送手数料',
             'stat-network': 'ネットワーク', 'stat-insurance': '保険基金',
@@ -391,8 +500,8 @@
         ko: {
             'nav-home': '홈', 'nav-trade': '거래', 'nav-staking': '스테이킹',
             'nav-dao': 'DAO', 'nav-bridge': '브리지', 'nav-buy': 'ETH 구매',
-            'hero-title': '새로운 시대의 연료',
-            'hero-desc': 'Ether — SAFE 생태계의 프리미엄 연료 토큰. Solana에서 스테이킹, 거버넌스 및 독점 출시에 액세스하세요.',
+            'hero-title': '금융의 미래는 열려 있습니다',
+            'hero-desc': 'Ether는 SAFE 생태계의 프리미엄 연료 토큰입니다. Solana에서 자금 이동, 수익 획득, 네트워크 거버넌스.',
             'hero-btn': '🚀 시작하기', 'hero-btn2': '탐색',
             'stat-supply': '총 공급량', 'stat-fee': '전송 수수료',
             'stat-network': '네트워크', 'stat-insurance': '보험 기금',
