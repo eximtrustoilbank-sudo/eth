@@ -14,7 +14,7 @@
             line-height: 1.6;
         }
         a { color: #4a90e2; text-decoration: none; }
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
         header {
             padding: 20px 0;
@@ -77,6 +77,16 @@
         .page-header h1 span { color: #4a90e2; }
         .page-header p { color: #4a5568; }
 
+        .page-banner {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 24px;
+            margin: 0 auto 30px;
+            display: block;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+        }
+
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -124,30 +134,6 @@
         .proposal-card .votes { font-size: 0.8rem; font-weight: 600; color: #4a90e2; }
         .proposal-card .badge { font-size: 0.7rem; background: #e8ecf0; padding: 2px 10px; border-radius: 20px; display: inline-block; margin-top: 6px; color: #4a5568; }
 
-        .section-title { font-size: 1.2rem; font-weight: 700; margin: 30px 0 12px; color: #1a1a1a; }
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 8px;
-            padding-bottom: 20px;
-        }
-        .tool-card {
-            background: #fafbfc;
-            border: 1px solid #e8ecf0;
-            border-radius: 12px;
-            padding: 10px 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            font-weight: 500;
-            color: #1a1a1a;
-            transition: 0.2s;
-            cursor: pointer;
-        }
-        .tool-card:hover { border-color: #4a90e2; background: #f0f4ff; }
-        .tool-card .icon { font-size: 16px; }
-
         footer {
             padding: 30px 0;
             border-top: 1px solid #e8ecf0;
@@ -163,7 +149,7 @@
             .nav-links { justify-content: center; }
             .page-header h1 { font-size: 1.8rem; }
             .proposals-grid { grid-template-columns: 1fr; }
-            .tools-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+            .page-banner { max-height: 200px; }
         }
     </style>
 </head>
@@ -172,7 +158,7 @@
 <header>
     <div class="container header-inner">
         <a href="index.html" class="logo">
-            <img src="https://raw.githubusercontent.com/eximtrustoilbank-sudo/eth/refs/heads/main/eth_logo.png" alt="Ether">
+            <img src="https://raw.githubusercontent.com/eximtrustoilbank-sudo/eth/main/eth_logo.png" alt="Ether">
             <span>Ether</span>
         </a>
         <div class="nav-links">
@@ -204,6 +190,8 @@
         <h1>🏛️ <span data-i18n="page-title">DAO</span></h1>
         <p data-i18n="page-desc">Govern the project together with the community</p>
     </div>
+
+    <img src="https://raw.githubusercontent.com/eximtrustoilbank-sudo/eth/main/index_eth.jpg" alt="Ether DAO" class="page-banner">
 
     <div class="stats-grid">
         <div class="stat-card"><div class="num" data-i18n="stat1">1,247</div><div class="lbl" data-i18n="stat1-lbl">Total Proposals</div></div>
@@ -242,9 +230,6 @@
             <div class="badge" data-i18n="prop4-badge">🆕 New</div>
         </a>
     </div>
-
-    <div class="section-title" data-i18n="section1">🗳️ Governance Tools</div>
-    <div class="tools-grid" id="governanceToolsGrid"></div>
 </div>
 
 <footer>
@@ -263,75 +248,9 @@
 
 <script>
     // ============================================================
-    // 10,000+ DAO-ФУНКЦИЙ
+    // 8 ЯЗЫКОВ — ПЕРЕВОДЧИК
     // ============================================================
 
-    const governanceTools = [
-        ['Snapshot', 'https://snapshot.org/#/', '🗳️'],
-        ['Tally', 'https://tally.xyz/', '📊'],
-        ['Boardroom', 'https://boardroom.io/', '🏛️'],
-        ['Aragon', 'https://aragon.org/', '⚡'],
-        ['DAOstack', 'https://daostack.io/', '🔗'],
-        ['MolochDAO', 'https://molochdao.com/', '🔄'],
-        ['Compound Governance', 'https://compound.finance/governance', '🏦'],
-        ['Uniswap Governance', 'https://uniswap.org/governance', '🔄'],
-        ['Aave Governance', 'https://aave.com/governance', '💧'],
-        ['MakerDAO', 'https://makerdao.com/', '🪙']
-    ];
-
-    function generateDAOLinks(count) {
-        const links = [];
-        const daos = ['Snapshot', 'Tally', 'Boardroom', 'Aragon', 'DAOstack', 'MolochDAO', 'Compound', 'Uniswap', 'Aave', 'MakerDAO', 'Curve', 'Balancer', 'SushiSwap', 'PancakeSwap', 'dYdX'];
-        const types = ['Governance', 'Proposal', 'Voting', 'Treasury', 'Delegation', 'Quadratic Voting'];
-        for (let i = 0; i < count; i++) {
-            const dao = daos[i % daos.length];
-            const type = types[i % types.length];
-            links.push({
-                name: `${dao} ${type} #${i+1}`,
-                url: `https://${dao.toLowerCase().replace(/\s/g, '')}.com/`,
-                icon: '🗳️'
-            });
-        }
-        return links;
-    }
-
-    const daoLinks = generateDAOLinks(10200);
-
-    function renderDaoGrid(id) {
-        const el = document.getElementById(id);
-        if (!el) return;
-        const baseTools = governanceTools.map(item => `
-            <a href="${item[1]}" target="_blank" class="tool-card">
-                <span class="icon">${item[2]}</span> ${item[0]}
-            </a>
-        `).join('');
-        el.innerHTML = baseTools;
-    }
-    renderDaoGrid('governanceToolsGrid');
-
-    // Добавляем 10,000+ ссылок
-    const container = document.querySelector('.container');
-    const megaDiv = document.createElement('div');
-    megaDiv.style.cssText = 'margin-top:40px;border-top:2px solid #e8ecf0;padding-top:30px;';
-    megaDiv.innerHTML = `<h2 style="text-align:center;font-size:1.8rem;font-weight:800;">🔗 10,000+ Governance Tools</h2>
-                         <p style="text-align:center;color:#4a5568;margin-bottom:20px;">All links lead to different DAO platforms</p>`;
-    const megaGrid = document.createElement('div');
-    megaGrid.style.cssText = 'display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:6px;padding-bottom:30px;';
-    const display = daoLinks.slice(0, 2000);
-    display.forEach(item => {
-        const card = document.createElement('a');
-        card.href = item.url;
-        card.target = '_blank';
-        card.style.cssText = 'background:#fafbfc;border:1px solid #e8ecf0;border-radius:8px;padding:6px 10px;font-size:11px;color:#4a5568;display:flex;align-items:center;gap:6px;transition:0.15s;text-decoration:none;';
-        card.onmouseover = function() { this.style.borderColor = '#4a90e2'; this.style.background = '#f0f4ff'; };
-        card.onmouseout = function() { this.style.borderColor = '#e8ecf0'; this.style.background = '#fafbfc'; };
-        card.innerHTML = `<span style="font-size:14px;">${item.icon}</span> ${item.name}`;
-        megaGrid.appendChild(card);
-    });
-    megaDiv.appendChild(megaGrid);
-    container.appendChild(megaDiv);
-
-    // ——— ПЕРЕВОДЧИК (8 ЯЗЫКОВ) ———
     const translations = {
         en: {
             'nav-home': 'Home', 'nav-trade': 'Trade', 'nav-staking': 'Staking',
@@ -346,7 +265,6 @@
             'prop2-title': 'New ETH/USDC Farm', 'prop2-desc': 'Launch farm with 200% APR', 'prop2-votes': '72% Yes', 'prop2-badge': '⭐ Important',
             'prop3-title': 'Marketing Budget', 'prop3-desc': 'Allocate 100K ETH for ads', 'prop3-votes': '94% Yes', 'prop3-badge': '✅ Approved',
             'prop4-title': 'DAO Constitution', 'prop4-desc': 'Community governance rules', 'prop4-votes': '—', 'prop4-badge': '🆕 New',
-            'section1': '🗳️ Governance Tools',
             'footer-copy': '© 2026 Ether Protocol — Vote and govern'
         },
         ru: {
@@ -362,7 +280,6 @@
             'prop2-title': 'Новая ферма ETH/USDC', 'prop2-desc': 'Запустить ферму с 200% APR', 'prop2-votes': '72% За', 'prop2-badge': '⭐ Важное',
             'prop3-title': 'Маркетинг-бюджет', 'prop3-desc': 'Выделить 100K ETH на рекламу', 'prop3-votes': '94% За', 'prop3-badge': '✅ Принято',
             'prop4-title': 'DAO-конституция', 'prop4-desc': 'Правила управления сообществом', 'prop4-votes': '—', 'prop4-badge': '🆕 Новое',
-            'section1': '🗳️ Инструменты управления',
             'footer-copy': '© 2026 Ether Protocol — Голосуй и управляй'
         },
         es: {
@@ -378,7 +295,6 @@
             'prop2-title': 'Nueva granja ETH/USDC', 'prop2-desc': 'Lanzar granja con 200% APR', 'prop2-votes': '72% Sí', 'prop2-badge': '⭐ Importante',
             'prop3-title': 'Presupuesto de marketing', 'prop3-desc': 'Destinar 100K ETH para publicidad', 'prop3-votes': '94% Sí', 'prop3-badge': '✅ Aprobado',
             'prop4-title': 'Constitución DAO', 'prop4-desc': 'Reglas de gobernanza comunitaria', 'prop4-votes': '—', 'prop4-badge': '🆕 Nuevo',
-            'section1': '🗳️ Herramientas de Gobernanza',
             'footer-copy': '© 2026 Ether Protocol — Vota y gobierna'
         },
         fr: {
@@ -394,7 +310,6 @@
             'prop2-title': 'Nouvelle ferme ETH/USDC', 'prop2-desc': 'Lancer une ferme avec 200% APR', 'prop2-votes': '72% Oui', 'prop2-badge': '⭐ Important',
             'prop3-title': 'Budget marketing', 'prop3-desc': 'Allouer 100K ETH pour la pub', 'prop3-votes': '94% Oui', 'prop3-badge': '✅ Approuvé',
             'prop4-title': 'Constitution DAO', 'prop4-desc': 'Règles de gouvernance communautaire', 'prop4-votes': '—', 'prop4-badge': '🆕 Nouveau',
-            'section1': '🗳️ Outils de Gouvernance',
             'footer-copy': '© 2026 Ether Protocol — Vote et gouverne'
         },
         de: {
@@ -410,7 +325,6 @@
             'prop2-title': 'Neue ETH/USDC Farm', 'prop2-desc': 'Farm mit 200% APR starten', 'prop2-votes': '72% Ja', 'prop2-badge': '⭐ Wichtig',
             'prop3-title': 'Marketing-Budget', 'prop3-desc': '100K ETH für Werbung', 'prop3-votes': '94% Ja', 'prop3-badge': '✅ Genehmigt',
             'prop4-title': 'DAO-Verfassung', 'prop4-desc': 'Community-Governance-Regeln', 'prop4-votes': '—', 'prop4-badge': '🆕 Neu',
-            'section1': '🗳️ Governance-Tools',
             'footer-copy': '© 2026 Ether Protocol — Stimme ab und verwalte'
         },
         zh: {
@@ -426,7 +340,6 @@
             'prop2-title': '新 ETH/USDC 农场', 'prop2-desc': '启动 200% APR 农场', 'prop2-votes': '72% 赞成', 'prop2-badge': '⭐ 重要',
             'prop3-title': '营销预算', 'prop3-desc': '分配 100K ETH 用于广告', 'prop3-votes': '94% 赞成', 'prop3-badge': '✅ 已批准',
             'prop4-title': 'DAO 章程', 'prop4-desc': '社区治理规则', 'prop4-votes': '—', 'prop4-badge': '🆕 新',
-            'section1': '🗳️ 治理工具',
             'footer-copy': '© 2026 Ether Protocol — 投票并治理'
         },
         ja: {
@@ -442,7 +355,6 @@
             'prop2-title': '新 ETH/USDC ファーム', 'prop2-desc': '200% APRのファームを開始', 'prop2-votes': '72% 賛成', 'prop2-badge': '⭐ 重要',
             'prop3-title': 'マーケティング予算', 'prop3-desc': '広告に100K ETHを割り当て', 'prop3-votes': '94% 賛成', 'prop3-badge': '✅ 承認済み',
             'prop4-title': 'DAO憲法', 'prop4-desc': 'コミュニティガバナンスルール', 'prop4-votes': '—', 'prop4-badge': '🆕 新',
-            'section1': '🗳️ ガバナンスツール',
             'footer-copy': '© 2026 Ether Protocol — 投票して管理'
         },
         ko: {
@@ -458,7 +370,6 @@
             'prop2-title': '새 ETH/USDC 팜', 'prop2-desc': '200% APR 팜 출시', 'prop2-votes': '72% 찬성', 'prop2-badge': '⭐ 중요',
             'prop3-title': '마케팅 예산', 'prop3-desc': '광고에 100K ETH 할당', 'prop3-votes': '94% 찬성', 'prop3-badge': '✅ 승인됨',
             'prop4-title': 'DAO 헌법', 'prop4-desc': '커뮤니티 거버넌스 규칙', 'prop4-votes': '—', 'prop4-badge': '🆕 새로움',
-            'section1': '🗳️ 거버넌스 도구',
             'footer-copy': '© 2026 Ether Protocol — 투표하고 관리하세요'
         }
     };
